@@ -15,6 +15,7 @@ public class Board {
     }
 
     public void setBoardSize(int boardSize) throws InvalidBoardException {
+        System.out.println("Board size => "+ boardSize);
         if(boardSize != 4 || boardSize !=  9 || boardSize !=  16 || boardSize !=  25) {
             throw new InvalidBoardException("Invalid Board Size");
         }else{
@@ -66,13 +67,16 @@ public class Board {
         line = br.readLine();
         String possibleValueString[] = line.split(" ");
         char possibleValues[]= new char[boardSize];
+        if(boardSize != possibleValues.length){
+            throw new InvalidBoardException("Possible value length does not match board size");
+        }
         int counter = 0;
         for(String n: possibleValueString) {
             char characterArray[] =  n.toCharArray();
             if(characterArray.length == 1){
                 possibleValues[counter++]= characterArray[0];
             }else{
-                throw new Error("Invalid value detected");
+                throw new InvalidBoardException("Invalid value detected");
             }
         }
         board.setPossibleValues(possibleValues);
