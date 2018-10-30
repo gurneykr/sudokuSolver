@@ -14,8 +14,12 @@ public class Board {
         return boardSize;
     }
 
-    public void setBoardSize(int boardSize) {
-        this.boardSize = boardSize;
+    public void setBoardSize(int boardSize) throws InvalidBoardException {
+        if(boardSize != 4 || boardSize !=  9 || boardSize !=  16 || boardSize !=  25) {
+            throw new InvalidBoardException("Invalid Board Size");
+        }else{
+            this.boardSize = boardSize;
+        }
     }
 
     public char[] getPossibleValues() {
@@ -46,7 +50,7 @@ public class Board {
             System.out.println();
         }
     }
-    public void loadBoard(String fileName)throws IOException {
+    public void loadBoard(String fileName)throws IOException, InvalidBoardException{
 
         File file = new File(fileName);
 
@@ -56,6 +60,7 @@ public class Board {
         String line;
         line = br.readLine();
         int boardSize = Integer.parseInt(line);
+
         board.setBoardSize(boardSize);
 
         line = br.readLine();
