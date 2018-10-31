@@ -13,6 +13,4 @@ public class Main {
         Board board = new Board();
         board.loadBoard(args[0]);
     }
-
-
 }

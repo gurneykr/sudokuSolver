@@ -101,7 +101,8 @@ public class Board {
         board.printBoard();
        // board.checkRow('4', 2);
        // board.checkCol('3', 2);
-        board.checkBlock('4',1, 3);
+        board.checkBlock('3',0, 1);
+
 
     }
     public boolean checkRow(char value, int row){
@@ -215,8 +216,8 @@ public class Board {
                 colStart = 20; colEnd = 24;
             }
         }
-        for(int rowCounter = rowStart; rowCounter < rowEnd; rowCounter++){
-            for(int colCounter = colStart; colCounter < colEnd; colCounter++){
+        for(int rowCounter = rowStart; rowCounter <= rowEnd; rowCounter++){
+            for(int colCounter = colStart; colCounter <= colEnd; colCounter++){
                 if(value == actualValues[rowCounter][colCounter]){
                     System.out.println("Start Row " + rowStart + " end row " +rowEnd + " start column " + colStart + " end column "+ colEnd);
                     System.out.println("Value " + value + " in [" + rowCounter +"][" + colCounter + "]");
@@ -225,7 +226,7 @@ public class Board {
             }
 
         }
-        System.out.println("Start Row " + rowStart + " end row " +rowEnd + " start column " + colStart + " end column "+ colEnd);
+        //System.out.println("Start Row " + rowStart + " end row " +rowEnd + " start column " + colStart + " end column "+ colEnd);
         System.out.println("Value " + value + " is not in [" + row +"][" + col + "]");
         return false;
     }
