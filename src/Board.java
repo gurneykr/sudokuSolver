@@ -39,7 +39,6 @@ public class Board {
         this.actualValues = actualValues;
     }
     public void printBoard(){
-        System.out.println(boardSize);
         for(char n: possibleValues){
             System.out.print(n +" ");
         }
@@ -101,9 +100,11 @@ public class Board {
         board.setActualValues(actualValue);
         board.printBoard();
         board.checkRow('4', 2);
+        board.checkCol('3', 2);
+        board.checkBlock('1',1, 0);
+
     }
     public boolean checkRow(char value, int row){
-        //walk through the actualValue array
         if(row <= boardSize){
             for(int col = 0; col < boardSize; col++){
                 if(value == actualValues[row][col]){
@@ -114,6 +115,116 @@ public class Board {
             System.out.println();
         }
         System.out.println("Value " + value +" was not in row " + row);
+        return false;
+    }
+
+    public boolean checkCol(char value, int col){
+        if(col <= boardSize){
+            for(int row = 0; row < boardSize; row++){
+                if(value == actualValues[row][col]){
+                    System.out.println("Value " + value +" is in col " + col);
+                    return true;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("Value " + value +" was not in col " + col);
+        return false;
+    }
+
+    public boolean checkBlock(char value, int row, int col){
+        int rowStart = 0;
+        int rowEnd = 0;
+        int colStart = 0;
+        int colEnd = 0;
+        if(boardSize == 4){
+            if(row < 2){
+                rowStart = 0; rowEnd = 1;
+            }else{
+                rowStart = 2; rowEnd = 3;
+            }
+            if(col < 2){
+                colStart = 0; colEnd = 1;
+            }else{
+                colStart = 2; colEnd = 3;
+            }
+
+        }
+
+        if(boardSize == 9){
+            if(row < 3){
+                rowStart = 0; rowEnd = 2;
+            }else if(row < 6){
+                rowStart = 3; rowEnd = 5;
+            }else if(row < 9){
+                rowStart = 6; rowEnd = 8;
+            }
+
+            if(col < 3){
+                colStart = 0; colEnd = 2;
+            }else if(col < 6){
+                colStart = 3; colEnd = 5;
+            }else if(col < 9){
+                colStart = 6; colEnd = 8;
+            }
+        }
+
+        if(boardSize == 16){
+            if(row < 4){
+                rowStart = 0; rowEnd = 3;
+            }else if(row < 8){
+                rowStart = 4; rowEnd = 7;
+            }else if(row < 12){
+                rowStart = 8; rowEnd = 11;
+            }else if(row < 16){
+                rowStart = 12; rowEnd = 15;
+            }
+            if(col < 4){
+                colStart = 0; colEnd = 3;
+            }else if(row < 8){
+                colStart = 4; colEnd = 7;
+            }else if(row < 12){
+                colStart = 8; colEnd = 11;
+            }else if(row < 16){
+                colStart = 12; colEnd = 15;
+            }
+        }
+
+        if(boardSize == 25){
+            if(row < 5){
+                rowStart = 0; rowEnd = 4;
+            }else if(row < 10){
+                rowStart = 5; rowEnd = 9;
+            }else if(row < 15){
+                rowStart = 10; rowEnd = 14;
+            }else if(row < 20){
+                rowStart = 15; rowEnd = 19;
+            }else if(row < 25){
+                rowStart = 20; rowEnd = 24;
+            }
+
+            if(col < 5){
+                colStart = 0; colEnd = 4;
+            }else if(row < 10){
+                colStart = 5; colEnd = 9;
+            }else if(row < 15){
+                colStart = 10; colEnd = 14;
+            }else if(row < 20){
+                colStart = 15; colEnd = 19;
+            }else if(row < 25){
+                colStart = 20; colEnd = 24;
+            }
+        }
+        for(int rowCounter = rowStart; rowCounter < rowEnd; rowCounter++){
+            for(int colCounter = colStart; colCounter < colEnd; colCounter++){
+                if(value == actualValues[rowCounter][colCounter]){
+                    System.out.println("Value " + value + " in [" + row +"][" + col + "]");
+                    return true;
+                }
+            }
+
+        }
+        System.out.println("Value " + value + " is not in [" + row +"][" + col + "]");
         return false;
     }
 }
