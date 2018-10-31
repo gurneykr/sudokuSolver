@@ -16,7 +16,7 @@ public class Board {
 
     public void setBoardSize(int boardSize) throws InvalidBoardException {
         System.out.println("Board size => "+ boardSize);
-        if(boardSize != 4 || boardSize !=  9 || boardSize !=  16 || boardSize !=  25) {
+        if(boardSize != 4 && boardSize !=  9 && boardSize !=  16 && boardSize !=  25) {
             throw new InvalidBoardException("Invalid Board Size");
         }else{
             this.boardSize = boardSize;
@@ -70,8 +70,9 @@ public class Board {
         if(boardSize != possibleValues.length){
             throw new InvalidBoardException("Possible value length does not match board size");
         }
-        int counter = 0;
+        int counter;
         for(String n: possibleValueString) {
+            counter = 0;
             char characterArray[] =  n.toCharArray();
             if(characterArray.length == 1){
                 possibleValues[counter++]= characterArray[0];
@@ -98,7 +99,21 @@ public class Board {
             }
         }
         board.setActualValues(actualValue);
-
         board.printBoard();
+        board.checkRow('4', 2);
+    }
+    public boolean checkRow(char value, int row){
+        //walk through the actualValue array
+        if(row <= boardSize){
+            for(int col = 0; col < boardSize; col++){
+                if(value == actualValues[row][col]){
+                    System.out.println("Value " + value +" is in row " + row);
+                    return true;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("Value " + value +" was not in row " + row);
+        return false;
     }
 }
