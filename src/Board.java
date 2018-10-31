@@ -99,9 +99,9 @@ public class Board {
         }
         board.setActualValues(actualValue);
         board.printBoard();
-        board.checkRow('4', 2);
-        board.checkCol('3', 2);
-        board.checkBlock('1',1, 0);
+       // board.checkRow('4', 2);
+       // board.checkCol('3', 2);
+        board.checkBlock('4',1, 3);
 
     }
     public boolean checkRow(char value, int row){
@@ -156,7 +156,7 @@ public class Board {
                 rowStart = 0; rowEnd = 2;
             }else if(row < 6){
                 rowStart = 3; rowEnd = 5;
-            }else if(row < 9){
+            }else{
                 rowStart = 6; rowEnd = 8;
             }
 
@@ -164,7 +164,7 @@ public class Board {
                 colStart = 0; colEnd = 2;
             }else if(col < 6){
                 colStart = 3; colEnd = 5;
-            }else if(col < 9){
+            }else{
                 colStart = 6; colEnd = 8;
             }
         }
@@ -176,7 +176,7 @@ public class Board {
                 rowStart = 4; rowEnd = 7;
             }else if(row < 12){
                 rowStart = 8; rowEnd = 11;
-            }else if(row < 16){
+            }else{
                 rowStart = 12; rowEnd = 15;
             }
             if(col < 4){
@@ -185,7 +185,7 @@ public class Board {
                 colStart = 4; colEnd = 7;
             }else if(row < 12){
                 colStart = 8; colEnd = 11;
-            }else if(row < 16){
+            }else{
                 colStart = 12; colEnd = 15;
             }
         }
@@ -199,7 +199,7 @@ public class Board {
                 rowStart = 10; rowEnd = 14;
             }else if(row < 20){
                 rowStart = 15; rowEnd = 19;
-            }else if(row < 25){
+            }else{
                 rowStart = 20; rowEnd = 24;
             }
 
@@ -211,19 +211,21 @@ public class Board {
                 colStart = 10; colEnd = 14;
             }else if(row < 20){
                 colStart = 15; colEnd = 19;
-            }else if(row < 25){
+            }else{
                 colStart = 20; colEnd = 24;
             }
         }
         for(int rowCounter = rowStart; rowCounter < rowEnd; rowCounter++){
             for(int colCounter = colStart; colCounter < colEnd; colCounter++){
                 if(value == actualValues[rowCounter][colCounter]){
-                    System.out.println("Value " + value + " in [" + row +"][" + col + "]");
+                    System.out.println("Start Row " + rowStart + " end row " +rowEnd + " start column " + colStart + " end column "+ colEnd);
+                    System.out.println("Value " + value + " in [" + rowCounter +"][" + colCounter + "]");
                     return true;
                 }
             }
 
         }
+        System.out.println("Start Row " + rowStart + " end row " +rowEnd + " start column " + colStart + " end column "+ colEnd);
         System.out.println("Value " + value + " is not in [" + row +"][" + col + "]");
         return false;
     }
