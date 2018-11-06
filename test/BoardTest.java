@@ -60,11 +60,12 @@ public class BoardTest{
 //        }
 //    }
 
+    String path = "C:\\Users\\Krista Gurney\\Documents\\cs5700\\sudokuSolver\\SamplePuzzles\\Puzzle-4x4-0001.txt";
     @Test
     public void validateCheckRow(){
         Board board = new Board();
         try {
-            board.loadBoard("C:\\Users\\Krista Gurney\\Documents\\cs5700\\sudokuSolver\\SamplePuzzles\\Puzzle-4x4-0001.txt");
+            board.loadBoard(path);
             board.checkRow('2', 0);
             assertEquals(true, false);
         }catch (IOException e){
@@ -77,7 +78,7 @@ public class BoardTest{
     public void validateCheckBlock(){
         Board board = new Board();
         try {
-            board.loadBoard("C:\\Users\\Krista Gurney\\Documents\\cs5700\\sudokuSolver\\SamplePuzzles\\Puzzle-4x4-0001.txt");
+            board.loadBoard(path);
             /*
                 2 - 3 1
                 1 3 - 4
