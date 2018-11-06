@@ -66,7 +66,7 @@ public class Board {
         line = br.readLine();
         String possibleValueString[] = line.split(" ");
         char possibleValues[]= new char[boardSize];
-        if(boardSize != possibleValues.length){
+        if(boardSize != possibleValueString.length){
             throw new InvalidBoardException("Possible value length does not match board size");
         }
         int counter;
