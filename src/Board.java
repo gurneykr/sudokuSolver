@@ -200,10 +200,10 @@ public class Board {
             if (col < 4) {
                 colStart = 0;
                 colEnd = 3;
-            } else if (row < 8) {
+            } else if (col < 8) {
                 colStart = 4;
                 colEnd = 7;
-            } else if (row < 12) {
+            } else if (col < 12) {
                 colStart = 8;
                 colEnd = 11;
             } else {
