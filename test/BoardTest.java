@@ -67,13 +67,14 @@ public class BoardTest{
         try {
             board.loadBoard(path);
             board.checkRow('2', 0);
-            assertEquals(true, false);
+            assertEquals(true, true);
         }catch (IOException e){
             e.printStackTrace();
         }catch (InvalidBoardException e){
-            assertEquals(true, true);
+            assertEquals(true, false);
         }
     }
+    
     @Test
     public void validateCheckBlock(){
         Board board = new Board();
@@ -104,11 +105,11 @@ public class BoardTest{
             board.checkBlock('1', 3, 2 );
             board.checkBlock('3', 3, 3 );
 
-            assertEquals(true, false);
+            assertEquals(true, true);
         }catch (IOException e){
             e.printStackTrace();
         }catch (InvalidBoardException e){
-            assertEquals(true, true);
+            assertEquals(true, false);
         }
     }
 

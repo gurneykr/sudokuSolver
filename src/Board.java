@@ -58,12 +58,12 @@ public class Board {
 
         BufferedReader br = new BufferedReader(new FileReader(file));
 
-        Board board = new Board();
+        //Board board = new Board();
         String line;
         line = br.readLine();
         int boardSize = Integer.parseInt(line);
 
-        board.setBoardSize(boardSize);
+        this.setBoardSize(boardSize);
 
         line = br.readLine();
         String possibleValueString[] = line.split(" ");
@@ -80,7 +80,7 @@ public class Board {
                 throw new InvalidBoardException("Invalid value detected");
             }
         }
-        board.setPossibleValues(possibleValues);
+        this.setPossibleValues(possibleValues);
 
 
         char actualValue[][] = new char[boardSize][boardSize];
@@ -98,12 +98,12 @@ public class Board {
                 }
             }
         }
-        board.setActualValues(actualValue);
-        board.printBoard();
+        this.setActualValues(actualValue);
+        this.printBoard();
         // board.checkRow('4', 2);
         // board.checkCol('3', 2);
-        board.checkBlock('3', 0, 1);
-        board.validateBoardValues();
+        this.checkBlock('3', 0, 1);
+        this.validateBoardValues();
 
 
     }
