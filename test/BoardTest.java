@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import static org.junit.Assert.*;
 
 public class BoardTest{
+    String path = "C:\\Users\\Krista Gurney\\Documents\\cs5700\\sudokuSolver\\SamplePuzzles\\";
 
 //    @Test
 //    public void loadInvalidBoard(){
@@ -60,7 +61,7 @@ public class BoardTest{
 //        }
 //    }
 //
-    String path = "C:\\Users\\Krista Gurney\\Documents\\cs5700\\sudokuSolver\\SamplePuzzles\\";
+//
 //
 //    @Test
 //    public void validateCheckRow(){
@@ -200,51 +201,62 @@ public class BoardTest{
 //            assertEquals(true, false);
 //        }
 //    }
+//
+//    @Test
+//    public void validateCheckBlock25x25(){
+//        Board board = new Board();
+//        try {
+//            board.loadBoard(path+"Puzzle-25x25-0101.txt");
+//            /*
+//            - L M - O - 2 - 4 5 - 7 - 9 - B - D - F G - I - K
+//            K G - I - P - M - O - 2 3 4 - 6 7 8 9 A B - D - F
+//            F B C - - K - - I - P - M - O 1 - 3 4 - 6 - 8 - A
+//            A - 7 - 9 - B - D - K - H I J P L - N - 1 - 3 4 5
+//            5 - 2 3 4 A 6 - 8 9 - B - D - K - H I - P - M - O
+//            O - L - N 5 - 2 3 - A 6 7 - 9 F - C - E - G H I J
+//            J K G H I O P L M N 5 1 2 3 4 A 6 7 8 9 F B C D E
+//            E F B C - J - G H - O - L - N 5 - 2 3 - A 6 7 8 9
+//            9 A - 7 - E - B - D - K G - I - P - M - 5 - 2 - 4
+//            4 5 1 2 3 9 A 6 7 8 E F B C D J K G H I O P L M N
+//            N - P - - 4 5 1 - 3 - A 6 - 8 E - B - D J - G - I
+//            I J - G H - O P L M 4 - 1 - 3 - A 6 - 8 - F - C D
+//            D E - B C - J - G - N - P L M 4 5 1 - 3 9 - 6 - 8
+//            8 - A 6 - D - F B - I J - G - N O - L - 4 5 - 2 3
+//            3 4 - 1 - 8 9 A - 7 D - F - C I - K - H N - P L M
+//            M N O P L 3 4 5 1 2 8 9 A 6 7 D E F B C I J K G H
+//            H - J - G M - O P - 3 4 5 - 2 8 9 A 6 - D E - B C
+//            C D - F - H - J - G - N - P L - 4 - 1 2 - 9 A - 7
+//            7 8 9 A 6 C D E F B H I J K G M N O P L 3 4 5 1 2
+//            2 3 - 5 1 - 8 - - 6 C - E - B - I J - G - N - P L
+//            L M N O P 2 3 4 5 1 7 8 9 A 6 C D E F B H I J K G
+//            G - I J - L - N O - 2 3 4 - 1 7 - 9 A - C D E F B
+//            B C D E F G H I J K L M N O P 2 3 4 5 1 7 8 9 A 6
+//            6 7 8 9 A B C D E F G H I J K L M N O P 2 3 4 5 1
+//            1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P
+//        */
+//            assertEquals(board.checkBlock('M',0,0), true);
+//            assertEquals(board.checkBlock('K', 0, 6), true);
+//            assertEquals(board.checkBlock('7', 0, 11 ), true);
+//
+//            assertEquals(board.checkBlock('1', 23, 0 ), true);
+//            assertEquals(board.checkBlock('C', 23, 5 ), true);
+//
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }catch (InvalidBoardException e){
+//            assertEquals(true, false);
+//        }
+//    }
 
     @Test
-    public void validateCheckBlock25x25(){
+    public void validateIsSolved()throws InvalidBoardException, IOException{
         Board board = new Board();
-        try {
-            board.loadBoard(path+"Puzzle-25x25-0101.txt");
-            /*
-            - L M - O - 2 - 4 5 - 7 - 9 - B - D - F G - I - K
-            K G - I - P - M - O - 2 3 4 - 6 7 8 9 A B - D - F
-            F B C - - K - - I - P - M - O 1 - 3 4 - 6 - 8 - A
-            A - 7 - 9 - B - D - K - H I J P L - N - 1 - 3 4 5
-            5 - 2 3 4 A 6 - 8 9 - B - D - K - H I - P - M - O
-            O - L - N 5 - 2 3 - A 6 7 - 9 F - C - E - G H I J
-            J K G H I O P L M N 5 1 2 3 4 A 6 7 8 9 F B C D E
-            E F B C - J - G H - O - L - N 5 - 2 3 - A 6 7 8 9
-            9 A - 7 - E - B - D - K G - I - P - M - 5 - 2 - 4
-            4 5 1 2 3 9 A 6 7 8 E F B C D J K G H I O P L M N
-            N - P - - 4 5 1 - 3 - A 6 - 8 E - B - D J - G - I
-            I J - G H - O P L M 4 - 1 - 3 - A 6 - 8 - F - C D
-            D E - B C - J - G - N - P L M 4 5 1 - 3 9 - 6 - 8
-            8 - A 6 - D - F B - I J - G - N O - L - 4 5 - 2 3
-            3 4 - 1 - 8 9 A - 7 D - F - C I - K - H N - P L M
-            M N O P L 3 4 5 1 2 8 9 A 6 7 D E F B C I J K G H
-            H - J - G M - O P - 3 4 5 - 2 8 9 A 6 - D E - B C
-            C D - F - H - J - G - N - P L - 4 - 1 2 - 9 A - 7
-            7 8 9 A 6 C D E F B H I J K G M N O P L 3 4 5 1 2
-            2 3 - 5 1 - 8 - - 6 C - E - B - I J - G - N - P L
-            L M N O P 2 3 4 5 1 7 8 9 A 6 C D E F B H I J K G
-            G - I J - L - N O - 2 3 4 - 1 7 - 9 A - C D E F B
-            B C D E F G H I J K L M N O P 2 3 4 5 1 7 8 9 A 6
-            6 7 8 9 A B C D E F G H I J K L M N O P 2 3 4 5 1
-            1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P
-        */
-            assertEquals(board.checkBlock('M',0,0), true);
-            assertEquals(board.checkBlock('K', 0, 6), true);
-            assertEquals(board.checkBlock('7', 0, 11 ), true);
+        board.loadBoard(path + "Puzzle-4x4-0001.txt");
+        assertEquals(board.isSolved(), false);
 
-            assertEquals(board.checkBlock('1', 23, 0 ), true);
-            assertEquals(board.checkBlock('C', 23, 5 ), true);
+        board.loadBoard(path + "solved.txt");
+        assertEquals(board.isSolved(), true);
 
-        }catch (IOException e){
-            e.printStackTrace();
-        }catch (InvalidBoardException e){
-            assertEquals(true, false);
-        }
     }
 
 

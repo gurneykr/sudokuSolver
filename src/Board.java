@@ -39,6 +39,14 @@ public class Board {
         this.actualValues = actualValues;
     }
 
+    public void setCharacter(char value, int row, int col)throws InvalidBoardException{
+        if(row <= boardSize && col <= boardSize){
+            validateValueInPossibleValues(value);
+        }else{
+            throw new InvalidBoardException("Value is not possible");
+        }
+    }
+
     public void printBoard() {
         for (char n : possibleValues) {
             System.out.print(n + " ");
@@ -104,8 +112,17 @@ public class Board {
         // board.checkCol('3', 2);
         this.checkBlock('3', 0, 1);
         this.validateBoardValues();
+    }
 
-
+    public boolean isSolved(){//make sure there are not dashes left
+        for(int i = 0; i < boardSize; i++){
+            for(int j = 0; j < boardSize; j++){
+                if(actualValues[i][j] == '-'){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public boolean checkRow(char value, int row) {
@@ -262,19 +279,23 @@ public class Board {
         return false;
     }
 
+    void validateValueInPossibleValues(char value)throws InvalidBoardException{
+        boolean isValid = false;
+        for(int k = 0; k < boardSize; k++) {
+            if(value == possibleValues[k] || value == '-' ){
+                isValid = true;
+                break;
+            }
+        }
+        if(!isValid) {
+            throw new InvalidBoardException("Invalid character in the board");
+        }
+    }
+
     void validateBoardValues() throws InvalidBoardException{//makes sure the board values are one of the possible values
         for(int i = 0; i < boardSize; i++) {
             for(int j = 0; j < boardSize;j++ ){
-                boolean isValid = false;
-                for(int k = 0; k < boardSize; k++) {
-                    if(actualValues[i][j] == possibleValues[k] || actualValues[i][j] == '-' ){
-                        isValid = true;
-                        break;
-                    }
-                }
-                if(!isValid) {
-                    throw new InvalidBoardException("Invalid character in the board in row" + i);
-                }
+                validateValueInPossibleValues(actualValues[i][j]);
             }
         }
     }
