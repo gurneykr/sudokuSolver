@@ -59,9 +59,9 @@ public class BoardTest{
 //            assertEquals(true, true);
 //        }
 //    }
-
+//
     String path = "C:\\Users\\Krista Gurney\\Documents\\cs5700\\sudokuSolver\\SamplePuzzles\\";
-
+//
 //    @Test
 //    public void validateCheckRow(){
 //        Board board = new Board();
@@ -152,48 +152,94 @@ public class BoardTest{
 //            assertEquals(true, false);
 //        }
 //    }
+//
+//    @Test
+//    public void validateCheckBlock16x16(){
+//        Board board = new Board();
+//        try {
+//            board.loadBoard(path+"Puzzle-16x16-0001.txt");
+//            /*
+//            7 1 - - A - E C - 3 2 - 6 - - 8
+//            6 - 2 - - - - - - - E - D C - 9
+//            E 8 - B - 3 - - 1 - G - - 4 5 -
+//            - 3 F - B - - - - 6 D - - - A -
+//         /  - E - - F C B - - 9 - D - 3 - -
+//            1 - 3 - 4 - 8 - A - - - - 9 - -
+//            - 7 C - - G - - - B F - A - - -
+//            - - - - - - 5 - 2 4 8 - C D 6 -
+//        /   - - - - - - C - 6 8 9 - 1 2 G -
+//            - G 8 - - 6 - - - 5 7 - 3 - - -
+//            C - E - 3 - A - B - - - - 7 - -
+//            - 4 - - 5 8 F - - G - C - 6 - -
+//       /    - C 9 - G - - - - F A - - - 2 -
+//            B A - E - 2 - - G - 5 - - 1 9 -
+//            4 - 6 - - - - - - - B - 8 E - G
+//            5 D - - 1 - 3 8 - E 4 - 7 - - B*/
+//            assertEquals(board.checkBlock('2',0,0), true);
+//            assertEquals(board.checkBlock('A', 0, 5), true);
+//            assertEquals(board.checkBlock('E', 0, 11 ), true);
+//            assertEquals(board.checkBlock('5', 0, 15 ), true);
+//
+//            assertEquals(board.checkBlock('C', 4, 0 ), true);
+//            assertEquals(board.checkBlock('B', 4, 5 ), true);
+//            assertEquals(board.checkBlock('F', 4, 11 ), true);
+//            assertEquals(board.checkBlock('9', 4,15  ), true);
+//
+//            assertEquals(board.checkBlock('G', 8, 0 ),true);
+//            assertEquals(board.checkBlock('A', 8, 5 ), true);
+//            assertEquals(board.checkBlock('B', 8, 11 ), true);
+//            assertEquals(board.checkBlock('7', 8, 15), true);
+//
+//            assertEquals(board.checkBlock('D', 12, 0 ), true);
+//            assertEquals(board.checkBlock('G', 12, 5 ), true);
+//            assertEquals(board.checkBlock('5', 12, 11 ), true);
+//            assertEquals(board.checkBlock('9', 12, 15), true);
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }catch (InvalidBoardException e){
+//            assertEquals(true, false);
+//        }
+//    }
 
     @Test
-    public void validateCheckBlock16x16(){
+    public void validateCheckBlock25x25(){
         Board board = new Board();
         try {
-            board.loadBoard(path+"Puzzle-16x16-0001.txt");
+            board.loadBoard(path+"Puzzle-25x25-0101.txt");
             /*
-            7 1 - - A - E C - 3 2 - 6 - - 8
-            6 - 2 - - - - - - - E - D C - 9
-            E 8 - B - 3 - - 1 - G - - 4 5 -
-            - 3 F - B - - - - 6 D - - - A -
-         /  - E - - F C B - - 9 - D - 3 - -
-            1 - 3 - 4 - 8 - A - - - - 9 - -
-            - 7 C - - G - - - B F - A - - -
-            - - - - - - 5 - 2 4 8 - C D 6 -
-        /   - - - - - - C - 6 8 9 - 1 2 G -
-            - G 8 - - 6 - - - 5 7 - 3 - - -
-            C - E - 3 - A - B - - - - 7 - -
-            - 4 - - 5 8 F - - G - C - 6 - -
-       /    - C 9 - G - - - - F A - - - 2 -
-            B A - E - 2 - - G - 5 - - 1 9 -
-            4 - 6 - - - - - - - B - 8 E - G
-            5 D - - 1 - 3 8 - E 4 - 7 - - B*/
-            assertEquals(board.checkBlock('2',0,0), true);
-            assertEquals(board.checkBlock('A', 0, 5), true);
-            assertEquals(board.checkBlock('E', 0, 11 ), true);
-            assertEquals(board.checkBlock('5', 0, 15 ), true);
+            - L M - O - 2 - 4 5 - 7 - 9 - B - D - F G - I - K
+            K G - I - P - M - O - 2 3 4 - 6 7 8 9 A B - D - F
+            F B C - - K - - I - P - M - O 1 - 3 4 - 6 - 8 - A
+            A - 7 - 9 - B - D - K - H I J P L - N - 1 - 3 4 5
+            5 - 2 3 4 A 6 - 8 9 - B - D - K - H I - P - M - O
+            O - L - N 5 - 2 3 - A 6 7 - 9 F - C - E - G H I J
+            J K G H I O P L M N 5 1 2 3 4 A 6 7 8 9 F B C D E
+            E F B C - J - G H - O - L - N 5 - 2 3 - A 6 7 8 9
+            9 A - 7 - E - B - D - K G - I - P - M - 5 - 2 - 4
+            4 5 1 2 3 9 A 6 7 8 E F B C D J K G H I O P L M N
+            N - P - - 4 5 1 - 3 - A 6 - 8 E - B - D J - G - I
+            I J - G H - O P L M 4 - 1 - 3 - A 6 - 8 - F - C D
+            D E - B C - J - G - N - P L M 4 5 1 - 3 9 - 6 - 8
+            8 - A 6 - D - F B - I J - G - N O - L - 4 5 - 2 3
+            3 4 - 1 - 8 9 A - 7 D - F - C I - K - H N - P L M
+            M N O P L 3 4 5 1 2 8 9 A 6 7 D E F B C I J K G H
+            H - J - G M - O P - 3 4 5 - 2 8 9 A 6 - D E - B C
+            C D - F - H - J - G - N - P L - 4 - 1 2 - 9 A - 7
+            7 8 9 A 6 C D E F B H I J K G M N O P L 3 4 5 1 2
+            2 3 - 5 1 - 8 - - 6 C - E - B - I J - G - N - P L
+            L M N O P 2 3 4 5 1 7 8 9 A 6 C D E F B H I J K G
+            G - I J - L - N O - 2 3 4 - 1 7 - 9 A - C D E F B
+            B C D E F G H I J K L M N O P 2 3 4 5 1 7 8 9 A 6
+            6 7 8 9 A B C D E F G H I J K L M N O P 2 3 4 5 1
+            1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P
+        */
+            assertEquals(board.checkBlock('M',0,0), true);
+            assertEquals(board.checkBlock('K', 0, 6), true);
+            assertEquals(board.checkBlock('7', 0, 11 ), true);
 
-            assertEquals(board.checkBlock('C', 4, 0 ), true);
-            assertEquals(board.checkBlock('B', 4, 5 ), true);
-            assertEquals(board.checkBlock('F', 4, 11 ), true);
-            assertEquals(board.checkBlock('9', 4,15  ), true);
+            assertEquals(board.checkBlock('1', 23, 0 ), true);
+            assertEquals(board.checkBlock('C', 23, 5 ), true);
 
-            assertEquals(board.checkBlock('G', 8, 0 ),true);
-            assertEquals(board.checkBlock('A', 8, 5 ), true);
-            assertEquals(board.checkBlock('B', 8, 11 ), true);
-            assertEquals(board.checkBlock('7', 8, 15), true);
-
-            assertEquals(board.checkBlock('D', 12, 0 ), true);
-            assertEquals(board.checkBlock('G', 12, 5 ), true);
-            assertEquals(board.checkBlock('5', 12, 11 ), true);
-            assertEquals(board.checkBlock('9', 12, 15), true);
         }catch (IOException e){
             e.printStackTrace();
         }catch (InvalidBoardException e){

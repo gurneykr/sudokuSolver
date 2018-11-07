@@ -233,13 +233,13 @@ public class Board {
             if (col < 5) {
                 colStart = 0;
                 colEnd = 4;
-            } else if (row < 10) {
+            } else if (col < 10) {
                 colStart = 5;
                 colEnd = 9;
-            } else if (row < 15) {
+            } else if (col < 15) {
                 colStart = 10;
                 colEnd = 14;
-            } else if (row < 20) {
+            } else if (col < 20) {
                 colStart = 15;
                 colEnd = 19;
             } else {
