@@ -299,4 +299,8 @@ public class Board {
             }
         }
     }
+    void solve(){
+        OneMissingSolver oneMissing = new OneMissingSolver();
+        oneMissing.solve(this);
+    }
 }
