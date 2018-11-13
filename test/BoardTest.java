@@ -134,17 +134,17 @@ public class BoardTest{
 //            1 8 6 9 - - - 2 5
 //            - 4 - - 5 1 8 3 -
 //            3 - 9 4 8 - - 7 -*/
-//            board.checkBlock('4',0,0);
-//            board.checkBlock('1', 0, 2 );
-//            board.checkBlock('9', 0, 8 );
+//            board.checkBlock('4',1);
+//            board.checkBlock('1', 2);
+//            board.checkBlock('9', 3 );
 //
-//            board.checkBlock('1', 3, 3 );
-//            board.checkBlock('6', 3, 4 );
-//            board.checkBlock('8', 3, 7 );
+//            board.checkBlock('2', 4);
+//            board.checkBlock('3', 5);
+//            board.checkBlock('1', 6 );
 //
-//            board.checkBlock('6', 6, 2 );
-//            board.checkBlock('8', 6,3  );
-//            board.checkBlock('7', 6, 8 );
+//            board.checkBlock('4',7 );
+//            board.checkBlock('5', 8 );
+//            board.checkBlock('7', 9);
 //
 //            assertEquals(true, true);
 //        }catch (IOException e){
@@ -153,7 +153,7 @@ public class BoardTest{
 //            assertEquals(true, false);
 //        }
 //    }
-//
+
 //    @Test
 //    public void validateCheckBlock16x16(){
 //        Board board = new Board();
@@ -176,32 +176,32 @@ public class BoardTest{
 //            B A - E - 2 - - G - 5 - - 1 9 -
 //            4 - 6 - - - - - - - B - 8 E - G
 //            5 D - - 1 - 3 8 - E 4 - 7 - - B*/
-//            assertEquals(board.checkBlock('2',0,0), true);
-//            assertEquals(board.checkBlock('A', 0, 5), true);
-//            assertEquals(board.checkBlock('E', 0, 11 ), true);
-//            assertEquals(board.checkBlock('5', 0, 15 ), true);
+//            assertEquals(board.checkBlock('7', 1), true);
+//            assertEquals(board.checkBlock('3',2), true);
+//            assertEquals(board.checkBlock('E', 3), true);
+//            assertEquals(board.checkBlock('8', 4), true);
 //
-//            assertEquals(board.checkBlock('C', 4, 0 ), true);
-//            assertEquals(board.checkBlock('B', 4, 5 ), true);
-//            assertEquals(board.checkBlock('F', 4, 11 ), true);
-//            assertEquals(board.checkBlock('9', 4,15  ), true);
+//            assertEquals(board.checkBlock('1', 5), true);
+//            assertEquals(board.checkBlock('4', 6), true);
+//            assertEquals(board.checkBlock('A', 7), true);
+//            assertEquals(board.checkBlock('9', 8), true);
 //
-//            assertEquals(board.checkBlock('G', 8, 0 ),true);
-//            assertEquals(board.checkBlock('A', 8, 5 ), true);
-//            assertEquals(board.checkBlock('B', 8, 11 ), true);
-//            assertEquals(board.checkBlock('7', 8, 15), true);
+//            assertEquals(board.checkBlock('G', 9 ),true);
+//            assertEquals(board.checkBlock('6', 10), true);
+//            assertEquals(board.checkBlock('5',  11 ), true);
+//            assertEquals(board.checkBlock('G', 12), true);
 //
-//            assertEquals(board.checkBlock('D', 12, 0 ), true);
-//            assertEquals(board.checkBlock('G', 12, 5 ), true);
-//            assertEquals(board.checkBlock('5', 12, 11 ), true);
-//            assertEquals(board.checkBlock('9', 12, 15), true);
+//            assertEquals(board.checkBlock('D', 13), true);
+//            assertEquals(board.checkBlock('G', 14), true);
+//            assertEquals(board.checkBlock('5', 15), true);
+//            assertEquals(board.checkBlock('9', 16), true);
 //        }catch (IOException e){
 //            e.printStackTrace();
 //        }catch (InvalidBoardException e){
 //            assertEquals(true, false);
 //        }
 //    }
-//
+
 //    @Test
 //    public void validateCheckBlock25x25(){
 //        Board board = new Board();
@@ -234,12 +234,12 @@ public class BoardTest{
 //            6 7 8 9 A B C D E F G H I J K L M N O P 2 3 4 5 1
 //            1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P
 //        */
-//            assertEquals(board.checkBlock('M',0,0), true);
-//            assertEquals(board.checkBlock('K', 0, 6), true);
-//            assertEquals(board.checkBlock('7', 0, 11 ), true);
+//            assertEquals(board.checkBlock('M',1), true);
+//            assertEquals(board.checkBlock('K', 2), true);
+//            assertEquals(board.checkBlock('7', 3 ), true);
 //
-//            assertEquals(board.checkBlock('1', 23, 0 ), true);
-//            assertEquals(board.checkBlock('C', 23, 5 ), true);
+//            assertEquals(board.checkBlock('1', 21 ), true);
+//            assertEquals(board.checkBlock('P', 25), true);
 //
 //        }catch (IOException e){
 //            e.printStackTrace();
@@ -248,16 +248,16 @@ public class BoardTest{
 //        }
 //    }
 
-    @Test
-    public void validateIsSolved()throws InvalidBoardException, IOException{
-        Board board = new Board();
-        board.loadBoard(path + "Puzzle-4x4-0001.txt");
-        assertEquals(board.isSolved(), false);
-
-        board.loadBoard(path + "solved.txt");
-        assertEquals(board.isSolved(), true);
-
-    }
+//    @Test
+//    public void validateIsSolved()throws InvalidBoardException, IOException{
+//        Board board = new Board();
+//        board.loadBoard(path + "Puzzle-4x4-0001.txt");
+//        assertEquals(board.isSolved(), false);
+//
+//        board.loadBoard(path + "solved.txt");
+//        assertEquals(board.isSolved(), true);
+//
+//    }
 
 
 }

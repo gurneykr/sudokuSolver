@@ -80,4 +80,18 @@ public class OneMissingSolver implements Solver {
         }
     }
 
+    public void findMissingBlock(Board board){
+        char[][] actualValues = board.getActualValues();
+        char[] possibleValues = board.getPossibleValues();
+
+        List<String> possibleValueList = new ArrayList();
+        for (char c : possibleValues) {
+            possibleValueList.add(String.valueOf(c));
+        }
+        int boardSize = board.getBoardSize();
+
+        //board.checkBlock('-', row, col)
+    }
+
+
 }
