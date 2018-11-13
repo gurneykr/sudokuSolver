@@ -154,12 +154,13 @@ public class Board {
     }
 
 
-    public boolean checkBlock(char value, int blockNum) {
+    public BlockInfo checkBlock(char value, int blockNum) {
         //uses the given row and col to find what block to look for a value
         int rowStart = 0;
         int rowEnd = 0;
         int colStart = 0;
         int colEnd = 0;
+
         if (boardSize == 4) {
             if(blockNum == 1){
                 rowStart = 0;
@@ -447,19 +448,25 @@ public class Board {
                 colEnd = 24;
             }
         }
+        int missingRow = 0;
+        int missingCol = 0;
         for (int rowCounter = rowStart; rowCounter <= rowEnd; rowCounter++) {
             for (int colCounter = colStart; colCounter <= colEnd; colCounter++) {
                 if (value == actualValues[rowCounter][colCounter]) {
                     System.out.println("Start Row " + rowStart + " end row " + rowEnd + " start column " + colStart + " end column " + colEnd);
                     System.out.println("Value " + value + " in [" + rowCounter + "][" + colCounter + "]");
-                    return true;
+                    return new BlockInfo(rowCounter, colCounter, blockNum, true);
+                }else if(value == '-'){
+                    missingRow = rowCounter;
+                    missingCol = colCounter;
                 }
             }
 
         }
         //System.out.println("Start Row " + rowStart + " end row " +rowEnd + " start column " + colStart + " end column "+ colEnd);
         System.out.println("Value " + value + " is not in block " + blockNum);
-        return false;
+
+        return new BlockInfo(missingRow, missingCol, blockNum, false);
     }
 
     void validateValueInPossibleValues(char value)throws InvalidBoardException{

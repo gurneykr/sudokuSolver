@@ -90,7 +90,13 @@ public class OneMissingSolver implements Solver {
         }
         int boardSize = board.getBoardSize();
 
-        //board.checkBlock('-', row, col)
+        for(int blockNum = 1; blockNum <= boardSize; blockNum++) {
+            for( char c: possibleValues) {
+                if (board.checkBlock(c, blockNum)) {
+                    possibleValueList.remove(String.valueOf(actualValues[row][col]));
+                }
+            }
+        }
     }
 
 
