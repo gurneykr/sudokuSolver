@@ -12,5 +12,10 @@ public class Main {
         }
         Board board = new Board();
         board.loadBoard(args[0]);
+        board.printBoard();
+        board.solve();
+        board.isSolved();
+        System.out.println();
+        board.printBoard();
     }
 }

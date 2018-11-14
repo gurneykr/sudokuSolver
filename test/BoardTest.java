@@ -1,3 +1,4 @@
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -217,7 +218,7 @@ public class BoardTest{
 //            assertEquals(true, false);
 //        }
 //    }
-//
+
 //    @Test
 //    public void validateCheckBlock25x25(){
 //        Board board = new Board();
@@ -259,6 +260,48 @@ public class BoardTest{
 //
 //            assertEquals(board.checkBlock('1', 21 ).isFound(), true);
 //            assertEquals(board.checkBlock('P', 25).isFound(), true);
+//
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }catch (InvalidBoardException e){
+//            assertEquals(true, false);
+//        }
+//    }
+
+//    @Test
+//    public void validateOneMissingInBlock() throws InvalidBoardException, IOException {
+//        Board board = new Board();
+//        /*
+//        4 - 2 1 3 6 7 5 8
+//        7 6 3 5 4 8 - 9 2
+//        5 1 8 - 2 9 3 6 4
+//        8 2 5 3 1 7 9 4 6
+//        6 7 4 - 9 5 2 1 3
+//        - 3 1 2 6 4 5 - 7
+//        1 8 6 9 7 3 4 - 5
+//        2 4 - 6 5 - 8 3 9
+//        3 5 9 4 8 2 6 7 1*/
+//        try {
+//            board.loadBoard(path +"OneMissingInBlock9x9.txt");
+//            assertEquals(board.checkBlock('9', 1 ).isFound(), false);
+//            assertEquals(board.checkBlock('9', 1).getRow(), 0);
+//            assertEquals(board.checkBlock('9', 1).getCol(), 1);
+//
+//            assertEquals(board.checkBlock('7', 2).isFound(), false);
+//            assertEquals(board.checkBlock('7', 2).getRow(), 2);
+//            assertEquals(board.checkBlock('7', 2).getCol(), 3);
+//
+//            assertEquals(board.checkBlock('1', 3).isFound(), false);
+//            assertEquals(board.checkBlock('1', 3).getRow(), 1);
+//            assertEquals(board.checkBlock('1', 3).getCol(), 6);
+//
+//            assertEquals(board.checkBlock('9', 4).isFound(), false);
+//            assertEquals(board.checkBlock('9', 4).getRow(), 5);
+//            assertEquals(board.checkBlock('9', 4).getCol(), 0);
+//
+//            assertEquals(board.checkBlock('8', 5).isFound(), false);
+//            assertEquals(board.checkBlock('8', 5).getRow(), 4);
+//            assertEquals(board.checkBlock('8', 5).getCol(), 3);
 //
 //        }catch (IOException e){
 //            e.printStackTrace();

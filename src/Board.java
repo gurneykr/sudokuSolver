@@ -453,10 +453,10 @@ public class Board {
         for (int rowCounter = rowStart; rowCounter <= rowEnd; rowCounter++) {
             for (int colCounter = colStart; colCounter <= colEnd; colCounter++) {
                 if (value == actualValues[rowCounter][colCounter]) {
-                    System.out.println("Start Row " + rowStart + " end row " + rowEnd + " start column " + colStart + " end column " + colEnd);
-                    System.out.println("Value " + value + " in [" + rowCounter + "][" + colCounter + "]");
+                   // System.out.println("Start Row " + rowStart + " end row " + rowEnd + " start column " + colStart + " end column " + colEnd);
+                   // System.out.println("Value " + value + " in [" + rowCounter + "][" + colCounter + "]");
                     return new BlockInfo(rowCounter, colCounter, blockNum, true);
-                }else if(value == '-'){
+                }else if(actualValues[rowCounter][colCounter] == '-'){
                     missingRow = rowCounter;
                     missingCol = colCounter;
                 }
@@ -491,6 +491,6 @@ public class Board {
     }
     void solve(){
         OneMissingSolver oneMissing = new OneMissingSolver();
-        //oneMissing.solve(this);B
+        oneMissing.solve(this);
     }
 }
