@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cell {
     private char value;
-    private char potentialValues[];
+    private List<String> potentialValuesList = new ArrayList();
 
     public Cell(char value){
         this.value = value;
@@ -17,11 +20,12 @@ public class Cell {
         this.value = value;
     }
 
-    public char[] getPotentialValues() {
-        return potentialValues;
+    public List<String> getPotentialValues() {
+        return potentialValuesList;
     }
 
-    public void setPotentialValues(char[] potentialValues) {
-        this.potentialValues = potentialValues;
+    public void addPotentialValue(char potentialValue) {
+
+        this.potentialValuesList.add(String.valueOf(potentialValue));
     }
 }
