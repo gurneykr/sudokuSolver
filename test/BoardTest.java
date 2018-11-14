@@ -134,19 +134,26 @@ public class BoardTest{
 //            1 8 6 9 - - - 2 5
 //            - 4 - - 5 1 8 3 -
 //            3 - 9 4 8 - - 7 -*/
-//            board.checkBlock('4',1);
-//            board.checkBlock('1', 2);
-//            board.checkBlock('9', 3 );
+//            assertEquals(board.checkBlock('4',1).isFound(), true);
+//            assertEquals(board.checkBlock('4',1).getRow(), 0);
+//            assertEquals(board.checkBlock('4',1).getCol(), 0);
 //
-//            board.checkBlock('2', 4);
-//            board.checkBlock('3', 5);
-//            board.checkBlock('1', 6 );
+//            assertEquals(board.checkBlock('1', 2).isFound(), true);
+//            assertEquals(board.checkBlock('1', 2).getRow(), 0);
+//            assertEquals(board.checkBlock('1', 2).getCol(), 3);
 //
-//            board.checkBlock('4',7 );
-//            board.checkBlock('5', 8 );
-//            board.checkBlock('7', 9);
+//            assertEquals(board.checkBlock('9', 3 ).isFound(), true);
+//            assertEquals(board.checkBlock('9', 3 ).getRow(), 1);
+//            assertEquals(board.checkBlock('9', 3 ).getCol(), 7);
 //
-//            assertEquals(true, true);
+//            assertEquals(board.checkBlock('2', 4).isFound(), true);
+//            assertEquals(board.checkBlock('3', 5).isFound(), true);
+//            assertEquals(board.checkBlock('1', 6 ).isFound(), true);
+//
+//            assertEquals(board.checkBlock('4',7 ).isFound(), true);
+//            assertEquals(board.checkBlock('5', 8 ).isFound(), true);
+//            assertEquals(board.checkBlock('7', 9).isFound(), true);
+//
 //        }catch (IOException e){
 //            e.printStackTrace();
 //        }catch (InvalidBoardException e){
@@ -176,32 +183,41 @@ public class BoardTest{
 //            B A - E - 2 - - G - 5 - - 1 9 -
 //            4 - 6 - - - - - - - B - 8 E - G
 //            5 D - - 1 - 3 8 - E 4 - 7 - - B*/
-//            assertEquals(board.checkBlock('7', 1), true);
-//            assertEquals(board.checkBlock('3',2), true);
-//            assertEquals(board.checkBlock('E', 3), true);
-//            assertEquals(board.checkBlock('8', 4), true);
+//            assertEquals(board.checkBlock('7', 1).isFound(), true);
+//            assertEquals(board.checkBlock('7', 1).getRow(), 0);
+//            assertEquals(board.checkBlock('7', 1).getCol(), 0);
 //
-//            assertEquals(board.checkBlock('1', 5), true);
-//            assertEquals(board.checkBlock('4', 6), true);
-//            assertEquals(board.checkBlock('A', 7), true);
-//            assertEquals(board.checkBlock('9', 8), true);
+//            assertEquals(board.checkBlock('3',2).isFound(), true);
+//            assertEquals(board.checkBlock('3', 2).getRow(), 2);
+//            assertEquals(board.checkBlock('3', 2).getCol(), 5);
 //
-//            assertEquals(board.checkBlock('G', 9 ),true);
-//            assertEquals(board.checkBlock('6', 10), true);
-//            assertEquals(board.checkBlock('5',  11 ), true);
-//            assertEquals(board.checkBlock('G', 12), true);
+//            assertEquals(board.checkBlock('E', 3).isFound(), true);
+//            assertEquals(board.checkBlock('E', 3).getRow(), 1);
+//            assertEquals(board.checkBlock('E', 3).getCol(), 10);
 //
-//            assertEquals(board.checkBlock('D', 13), true);
-//            assertEquals(board.checkBlock('G', 14), true);
-//            assertEquals(board.checkBlock('5', 15), true);
-//            assertEquals(board.checkBlock('9', 16), true);
+//            assertEquals(board.checkBlock('8', 4).isFound(), true);
+//
+//            assertEquals(board.checkBlock('1', 5).isFound(), true);
+//            assertEquals(board.checkBlock('4', 6).isFound(), true);
+//            assertEquals(board.checkBlock('A', 7).isFound(), true);
+//            assertEquals(board.checkBlock('9', 8).isFound(), true);
+//
+//            assertEquals(board.checkBlock('G', 9 ).isFound(),true);
+//            assertEquals(board.checkBlock('6', 10).isFound(), true);
+//            assertEquals(board.checkBlock('5',  11 ).isFound(), true);
+//            assertEquals(board.checkBlock('G', 12).isFound(), true);
+//
+//            assertEquals(board.checkBlock('D', 13).isFound(), true);
+//            assertEquals(board.checkBlock('G', 14).isFound(), true);
+//            assertEquals(board.checkBlock('5', 15).isFound(), true);
+//            assertEquals(board.checkBlock('9', 16).isFound(), true);
 //        }catch (IOException e){
 //            e.printStackTrace();
 //        }catch (InvalidBoardException e){
 //            assertEquals(true, false);
 //        }
 //    }
-
+//
 //    @Test
 //    public void validateCheckBlock25x25(){
 //        Board board = new Board();
@@ -234,12 +250,15 @@ public class BoardTest{
 //            6 7 8 9 A B C D E F G H I J K L M N O P 2 3 4 5 1
 //            1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P
 //        */
-//            assertEquals(board.checkBlock('M',1), true);
-//            assertEquals(board.checkBlock('K', 2), true);
-//            assertEquals(board.checkBlock('7', 3 ), true);
+//            assertEquals(board.checkBlock('M',1).isFound(), true);
+//            assertEquals(board.checkBlock('M',1).getRow(), 0);
+//            assertEquals(board.checkBlock('M',1).getCol(),2 );
 //
-//            assertEquals(board.checkBlock('1', 21 ), true);
-//            assertEquals(board.checkBlock('P', 25), true);
+//            assertEquals(board.checkBlock('K', 2).isFound(), true);
+//            assertEquals(board.checkBlock('7', 3 ).isFound(), true);
+//
+//            assertEquals(board.checkBlock('1', 21 ).isFound(), true);
+//            assertEquals(board.checkBlock('P', 25).isFound(), true);
 //
 //        }catch (IOException e){
 //            e.printStackTrace();

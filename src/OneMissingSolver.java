@@ -5,7 +5,8 @@ public class OneMissingSolver implements Solver {
     @Override
     public void solve(Board board) {
         //use this to solve for only 1 missing character
-        findMissingValuesCol(board);
+        //findMissingValuesCol(board);
+        findMissingBlock(board);
     }
 
     public void findMissingValuesCol(Board board){
@@ -89,12 +90,30 @@ public class OneMissingSolver implements Solver {
             possibleValueList.add(String.valueOf(c));
         }
         int boardSize = board.getBoardSize();
+        int notFound = 0;
 
         for(int blockNum = 1; blockNum <= boardSize; blockNum++) {
+            notFound = 0;
+            BlockInfo missingBlockInfo = null;
+
+            possibleValueList.clear();
+            for (char c : possibleValues) {
+                possibleValueList.add(String.valueOf(c));
+            }
+
             for( char c: possibleValues) {
-                if (board.checkBlock(c, blockNum)) {
-                    possibleValueList.remove(String.valueOf(actualValues[row][col]));
+                BlockInfo blockInfo = board.checkBlock(c, blockNum);
+                if (blockInfo.isFound()){
+                    possibleValueList.remove(String.valueOf(actualValues[blockInfo.getRow()][blockInfo.getCol()]));
+                }else{
+                    notFound++;
+                    missingBlockInfo = blockInfo;
                 }
+            }
+            if(notFound == 1){
+                String value = possibleValueList.get(0);
+                char[] array = value.toCharArray();
+                actualValues[ missingBlockInfo.getRow() ][ missingBlockInfo.getCol() ] = array[0];
             }
         }
     }

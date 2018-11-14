@@ -14,12 +14,22 @@ public class OneMissingSolverTest {
 //        assertEquals(board.getActualValues()[0][1], '4');
 //    }
 
+//    @Test
+//    public void validatefindMissingValuesRow()throws InvalidBoardException, IOException {
+//        Board board = new Board();
+//        board.loadBoard(path + "Puzzle-4x4-0001.txt");
+//        board.solve();
+//        assertEquals(board.getActualValues()[0][1], '4');
+//    }
+
     @Test
-    public void validatefindMissingValuesRow()throws InvalidBoardException, IOException {
+    public void validateFindMissingBlock() throws InvalidBoardException, IOException{
         Board board = new Board();
         board.loadBoard(path + "Puzzle-4x4-0001.txt");
-        board.solve();
-        assertEquals(board.getActualValues()[0][1], '4');
+
+        OneMissingSolver missingSolver = new OneMissingSolver();
+        missingSolver.solve(board);
+        assertEquals(board.getActualValues()[0][1], '4' );
     }
 
 }
