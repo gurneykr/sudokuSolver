@@ -7,6 +7,8 @@ public class OneMissingSolver implements Solver {
         //use this to solve for only 1 missing character
         //findMissingValuesCol(board);
         findMissingBlock(board);
+        findMissingValuesCol(board);
+        findMissingValuesRow(board);
     }
 
     public void findMissingValuesCol(Board board){

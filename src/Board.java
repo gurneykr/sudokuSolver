@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.stream.Stream;
 
 public class Board {
     int boardSize;
@@ -47,7 +48,7 @@ public class Board {
         }
     }
 
-    public void printBoard() {
+    public void printBoard(Stream stream) {
         for (char n : possibleValues) {
             System.out.print(n + " ");
         }
@@ -66,7 +67,6 @@ public class Board {
 
         BufferedReader br = new BufferedReader(new FileReader(file));
 
-        //Board board = new Board();
         String line;
         line = br.readLine();
         int boardSize = Integer.parseInt(line);
@@ -97,7 +97,7 @@ public class Board {
             line = br.readLine();
             String boardValues[] = line.split(" ");
             for (String n : boardValues) {
-                //char valueArray[]= n.toCharArray();
+
                 char characterArray[] = n.toCharArray();
                 if (characterArray.length == 1) {
                     actualValue[row][counter++] = characterArray[0];
@@ -108,9 +108,7 @@ public class Board {
         }
         this.setActualValues(actualValue);
         this.printBoard();
-        // board.checkRow('4', 2);
-        // board.checkCol('3', 2);
-        this.checkBlock('3', 1);
+
         this.validateBoardValues();
     }
 
@@ -129,13 +127,10 @@ public class Board {
         if (row <= boardSize) {
             for (int col = 0; col < boardSize; col++) {
                 if (value == actualValues[row][col]) {
-                    System.out.println("Value " + value + " is in row " + row);
                     return true;
                 }
             }
-            System.out.println();
         }
-        System.out.println("Value " + value + " was not in row " + row);
         return false;
     }
 
@@ -143,13 +138,10 @@ public class Board {
         if (col <= boardSize) {
             for (int row = 0; row < boardSize; row++) {
                 if (value == actualValues[row][col]) {
-                    System.out.println("Value " + value + " is in col " + col);
                     return true;
                 }
             }
-            System.out.println();
         }
-        System.out.println("Value " + value + " was not in col " + col);
         return false;
     }
 
@@ -463,9 +455,6 @@ public class Board {
             }
 
         }
-        //System.out.println("Start Row " + rowStart + " end row " +rowEnd + " start column " + colStart + " end column "+ colEnd);
-        System.out.println("Value " + value + " is not in block " + blockNum);
-
         return new BlockInfo(missingRow, missingCol, blockNum, false);
     }
 
@@ -583,15 +572,11 @@ public class Board {
         for (int rowCounter = rowStart; rowCounter <= rowEnd; rowCounter++) {
             for (int colCounter = colStart; colCounter <= colEnd; colCounter++) {
                 if (value == actualValues[rowCounter][colCounter]) {
-                    System.out.println("Start Row " + rowStart + " end row " + rowEnd + " start column " + colStart + " end column " + colEnd);
-                    System.out.println("Value " + value + " in [" + rowCounter + "][" + colCounter + "]");
                     return true;
                 }
             }
 
         }
-        //System.out.println("Start Row " + rowStart + " end row " +rowEnd + " start column " + colStart + " end column "+ colEnd);
-        System.out.println("Value " + value + " is not in [" + row + "][" + col + "]");
         return false;
     }
 
