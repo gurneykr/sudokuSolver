@@ -617,8 +617,10 @@ public class Board {
     }
     void solve(){
         OneMissingSolver oneMissing = new OneMissingSolver();
+        PotentialValueSolver potentialValueSolver = new PotentialValueSolver();
         int counter = 0;
-        while(!this.isSolved() && counter < 10) {
+        while(!this.isSolved() && counter < 30) {
+            potentialValueSolver.solve(this);
             oneMissing.solve(this);
             counter++;
         }

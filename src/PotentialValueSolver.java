@@ -4,6 +4,8 @@ public class PotentialValueSolver implements Solver{
         //for a row/col compare our actual values with the possible values
         //if a possible value is not in the row, column and block, add it to the potential value
         //if only one potential value is left that is the solution
+        Cell[][] cellArray = initializeCells(board);
+        findPotentialValues(cellArray, board);
     }
 
     public Cell[][] initializeCells(Board board){
@@ -13,7 +15,8 @@ public class PotentialValueSolver implements Solver{
 
         for(int row = 0; row < board.getBoardSize(); row++){
             for(int col = 0; col < board.getBoardSize(); col++) {
-                cellValues[row][col].setValue(actualValues[row][col]);
+                Cell cell = new Cell(actualValues[row][col]);
+                cellValues[row][col] = cell;
             }
         }
         return cellValues;
@@ -34,11 +37,12 @@ public class PotentialValueSolver implements Solver{
 
                     }
                 }
+                if(cellValues[row][col].getPotentialValues().size() == 1){
+                    //sets the value to the potentialvalue[0]
+                    board.getActualValues()[row][col] = cellValues[row][col].getPotentialValues().get(0).toCharArray()[0];
+                }
             }
         }
-        //loop through all the possible values
-        //checkRow checkCol checkBlock for that value
-        //if it's not found add it to a potential value array
         //if potential value only has one
 
     }
