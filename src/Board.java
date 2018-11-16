@@ -48,7 +48,7 @@ public class Board {
         }
     }
 
-    public void printBoard(Stream stream) {
+    public void printBoard() {
         for (char n : possibleValues) {
             System.out.print(n + " ");
         }
