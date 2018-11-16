@@ -1,11 +1,14 @@
 public class PotentialValueSolver implements Solver{
     @Override
-    public void solve(Board board) {
+    public long solve(Board board) {
+        long startTime = System.currentTimeMillis();
         //for a row/col compare our actual values with the possible values
         //if a possible value is not in the row, column and block, add it to the potential value
         //if only one potential value is left that is the solution
         Cell[][] cellArray = initializeCells(board);
         findPotentialValues(cellArray, board);
+        long endTime = System.currentTimeMillis();
+        return endTime - startTime;
     }
 
     public Cell[][] initializeCells(Board board){

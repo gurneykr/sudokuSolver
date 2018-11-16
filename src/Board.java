@@ -1,7 +1,6 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class Board {
@@ -48,7 +47,8 @@ public class Board {
         }
     }
 
-    public void printBoard() {
+    public void printBoard() throws FileNotFoundException {
+
         for (char n : possibleValues) {
             System.out.print(n + " ");
         }
@@ -107,7 +107,7 @@ public class Board {
             }
         }
         this.setActualValues(actualValue);
-        this.printBoard();
+        //this.printBoard(true, "out.txt");
 
         this.validateBoardValues();
     }
@@ -600,14 +600,22 @@ public class Board {
             }
         }
     }
-    void solve(){
+    Map<String, Long> solve(){
+        HashMap<String, Long> map = new HashMap();
+
         OneMissingSolver oneMissing = new OneMissingSolver();
         PotentialValueSolver potentialValueSolver = new PotentialValueSolver();
         int counter = 0;
+        long potentialValueTimer = 0;
+        long oneMissingTimer = 0;
         while(!this.isSolved() && counter < 30) {
-            potentialValueSolver.solve(this);
-            oneMissing.solve(this);
+            potentialValueTimer += potentialValueSolver.solve(this);
+            oneMissingTimer += oneMissing.solve(this);
             counter++;
         }
+        map.put("Potential Value Solver: ", potentialValueTimer );
+        map.put("One Missing Solver: ", oneMissingTimer);
+
+        return map;
     }
 }

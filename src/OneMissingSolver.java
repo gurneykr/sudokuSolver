@@ -1,14 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class OneMissingSolver implements Solver {
     @Override
-    public void solve(Board board) {
-        //use this to solve for only 1 missing character
-        //findMissingValuesCol(board);
+    public long solve(Board board) {
+        long startTime = System.currentTimeMillis();
+
         findMissingBlock(board);
         findMissingValuesCol(board);
         findMissingValuesRow(board);
+
+        long endTime = System.currentTimeMillis();
+        return endTime - startTime;
     }
 
     public void findMissingValuesCol(Board board){
