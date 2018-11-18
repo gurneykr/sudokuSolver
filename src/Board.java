@@ -627,6 +627,9 @@ public class Board {
             potentialValueCounter++;
             oneMissingCounter++;
         }
+        if(!this.isSolved()){
+            System.out.println("Can't solve the puzzle");
+        }
         potentialValueInfo.setSolverTime(potentialValueTimer);
         potentialValueInfo.setTimesUsed(potentialValueCounter);
 
