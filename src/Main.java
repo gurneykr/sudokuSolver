@@ -18,11 +18,15 @@ public class Main {
         Board board = new Board();
         board.loadBoard(args[0]);
 
-        PrintStream o = new PrintStream("out.txt");
-
-        PrintStream console = System.out;
-
-        System.setOut(o);
+        if(args.length == 1){
+            if(args[0].equals("-h")){
+                System.out.println("Provide input file and/or output file: <input file name> <output file name>");
+            }
+        }
+        if(args.length == 2) {
+            PrintStream o = new PrintStream(args[1]);
+            System.setOut(o);
+        }
         System.out.println(board.getBoardSize());
         board.printBoard();
 
@@ -34,6 +38,8 @@ public class Main {
 
         System.out.println("Solution:");
         board.printBoard();
+        System.out.println();
+        System.out.println();
 
         timerMap.forEach((name,time)->{
             String solvers = String.format("%24s     %02d:%02d:%02d.%d",
@@ -51,7 +57,7 @@ public class Main {
 
         long millis = endTime - startTime;
 
-        String hms = String.format("%02d:%02d:%02d.%d",
+        String hms = String.format("                 %02d:%02d:%02d.%d",
                 TimeUnit.MILLISECONDS.toHours(millis),
                 TimeUnit.MILLISECONDS.toMinutes(millis) -
                         TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),

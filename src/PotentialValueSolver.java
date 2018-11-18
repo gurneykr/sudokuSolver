@@ -46,7 +46,5 @@ public class PotentialValueSolver implements Solver{
                 }
             }
         }
-        //if potential value only has one
-
     }
 }

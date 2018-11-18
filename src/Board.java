@@ -608,6 +608,7 @@ public class Board {
         int counter = 0;
         long potentialValueTimer = 0;
         long oneMissingTimer = 0;
+
         while(!this.isSolved() && counter < 30) {
             potentialValueTimer += potentialValueSolver.solve(this);
             oneMissingTimer += oneMissing.solve(this);
