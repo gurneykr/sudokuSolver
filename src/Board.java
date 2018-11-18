@@ -1,5 +1,7 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -600,23 +602,37 @@ public class Board {
             }
         }
     }
-    Map<String, Long> solve(){
-        HashMap<String, Long> map = new HashMap();
+    List<SolverInfo> solve(){
 
-        OneMissingSolver oneMissing = new OneMissingSolver();
+        List<SolverInfo> solvers = new ArrayList();
+        OneMissingSolver oneMissingSolver = new OneMissingSolver();
         PotentialValueSolver potentialValueSolver = new PotentialValueSolver();
+
+        SolverInfo potentialValueInfo = new SolverInfo("Potential Value Solver");
+        SolverInfo oneMissingInfo = new SolverInfo("One Missing Solver");
+
+        solvers.add(potentialValueInfo);
+        solvers.add(oneMissingInfo);
+
         int counter = 0;
         long potentialValueTimer = 0;
         long oneMissingTimer = 0;
+        int potentialValueCounter = 0;
+        int oneMissingCounter = 0;
 
         while(!this.isSolved() && counter < 30) {
             potentialValueTimer += potentialValueSolver.solve(this);
-            oneMissingTimer += oneMissing.solve(this);
+            oneMissingTimer += oneMissingSolver.solve(this);
             counter++;
+            potentialValueCounter++;
+            oneMissingCounter++;
         }
-        map.put("Potential Value Solver: ", potentialValueTimer );
-        map.put("One Missing Solver: ", oneMissingTimer);
+        potentialValueInfo.setSolverTime(potentialValueTimer);
+        potentialValueInfo.setTimesUsed(potentialValueCounter);
 
-        return map;
+        oneMissingInfo.setSolverTime(oneMissingTimer);
+        oneMissingInfo.setTimesUsed(oneMissingCounter);
+
+        return solvers;
     }
 }

@@ -54,6 +54,7 @@ B C D E F G H I J K L M N O P 2 3 4 5 1 7 8 9 A 6
 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P 
 
 
-    One Missing Solver:      00:00:00.7
-Potential Value Solver:      00:00:00.6
-Total Time:                  00:00:00.23
+Strategy                 Uses       Time      
+Potential Value Solver    2   00:00:00.12
+One Missing Solver        2   00:00:00.12
+Total Time:                   00:00:00.29

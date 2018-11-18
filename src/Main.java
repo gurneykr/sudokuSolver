@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -31,7 +32,7 @@ public class Main {
         board.printBoard();
 
         long startTime = System.currentTimeMillis();
-        Map<String, Long> timerMap = board.solve();
+        List<SolverInfo> solverInfoList = board.solve();
         long endTime = System.currentTimeMillis();
 
         board.isSolved();
@@ -41,15 +42,21 @@ public class Main {
         System.out.println();
         System.out.println();
 
-        timerMap.forEach((name,time)->{
-            String solvers = String.format("%24s     %02d:%02d:%02d.%d",
-                    name,
-                    TimeUnit.MILLISECONDS.toHours(time),
-                    TimeUnit.MILLISECONDS.toMinutes(time) -
-                            TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(time)),
-                    TimeUnit.MILLISECONDS.toSeconds(time) -
-                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time)),
-                    time);
+        String  title = String.format("%-24s %-10s %-10s", "Strategy", "Uses", "Time");
+
+        System.out.println(title);
+        //System.out.println("           Strategy          Uses           Time");
+
+        solverInfoList.forEach((solverInfo)->{
+            String solvers = String.format("%-24s %2d   %02d:%02d:%02d.%d",
+                    solverInfo.getSolverName(),
+                    solverInfo.getTimesUsed(),
+                    TimeUnit.MILLISECONDS.toHours(solverInfo.getSolverTime()),
+                    TimeUnit.MILLISECONDS.toMinutes(solverInfo.getSolverTime()) -
+                            TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(solverInfo.getSolverTime())),
+                    TimeUnit.MILLISECONDS.toSeconds(solverInfo.getSolverTime()) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(solverInfo.getSolverTime())),
+                    solverInfo.getSolverTime());
             System.out.println(solvers);
         });
 
@@ -57,7 +64,8 @@ public class Main {
 
         long millis = endTime - startTime;
 
-        String hms = String.format("                 %02d:%02d:%02d.%d",
+        String hms = String.format("%-17s %02d:%02d:%02d.%d",
+                " ",
                 TimeUnit.MILLISECONDS.toHours(millis),
                 TimeUnit.MILLISECONDS.toMinutes(millis) -
                         TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
