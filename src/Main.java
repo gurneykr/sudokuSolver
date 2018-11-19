@@ -1,13 +1,8 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.PrintStream;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    Cell cell = new Cell();
 
     public static void main(String[] args)throws Exception {
 
