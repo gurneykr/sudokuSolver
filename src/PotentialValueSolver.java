@@ -7,6 +7,7 @@ public class PotentialValueSolver implements Solver{
         //if only one potential value is left that is the solution
         Cell[][] cellArray = initializeCells(board);
         findPotentialValues(cellArray, board);
+
         long endTime = System.currentTimeMillis();
         return endTime - startTime;
     }
