@@ -16,10 +16,10 @@ public class OneMissingSolverTest {
         1 3 - 4
         3 1 4 -
         - 2 1 3*/
-        assertEquals(board.getActualValues()[0][1], '4');
-        assertEquals(board.getActualValues()[1][2], '2');
-        assertEquals(board.getActualValues()[2][3], '2');
-        assertEquals(board.getActualValues()[3][0], '4');
+        assertEquals(board.getCellArray()[0][1].getValue(), '4');
+        assertEquals(board.getCellArray()[1][2].getValue(), '2');
+        assertEquals(board.getCellArray()[2][3].getValue(), '2');
+        assertEquals(board.getCellArray()[3][0].getValue(), '4');
     }
 
     @Test
@@ -27,7 +27,7 @@ public class OneMissingSolverTest {
         Board board = new Board();
         board.loadBoard(path + "Puzzle-4x4-0001.txt");
         board.solve();
-        assertEquals(board.getActualValues()[0][1], '4');
+        assertEquals(board.getCellArray()[0][1].getValue(), '4');
     }
 
     @Test
@@ -42,10 +42,10 @@ public class OneMissingSolverTest {
 
         OneMissingSolver missingSolver = new OneMissingSolver();
         missingSolver.solve(board);
-        assertEquals(board.getActualValues()[0][1], '4' );
-        assertEquals(board.getActualValues()[1][2], '2' );
-        assertEquals(board.getActualValues()[3][0], '4' );
-        assertEquals(board.getActualValues()[2][3], '2' );
+        assertEquals(board.getCellArray()[0][1].getValue(), '4' );
+        assertEquals(board.getCellArray()[1][2].getValue(), '2' );
+        assertEquals(board.getCellArray()[3][0].getValue(), '4' );
+        assertEquals(board.getCellArray()[2][3].getValue(), '2' );
     }
 
 }

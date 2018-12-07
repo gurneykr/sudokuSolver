@@ -15,7 +15,8 @@ public class OneMissingSolver implements Solver {
     }
 
     public void findMissingValuesCol(Board board){
-        char[][] actualValues = board.getActualValues();
+       // char[][] actualValues = board.getActualValues();
+        Cell [][] cellValues = board.getCellArray();
         char[] possibleValues = board.getPossibleValues();
 
         List<String> possibleValueList = new ArrayList();
@@ -35,23 +36,23 @@ public class OneMissingSolver implements Solver {
             }
 
             for (int col = 0; col < boardSize; col++){
-                if (actualValues[row][col] == '-') {
+                if (cellValues[row][col].getValue() == '-') {
                     dashCount++;
                     dashIndex = col;     //keep track of what column the dash is in
                 }else{
-                    possibleValueList.remove(String.valueOf(actualValues[row][col]));
+                    possibleValueList.remove(String.valueOf(cellValues[row][col].getValue()));
                 }
             }
             if(dashCount == 1){
                 String value = possibleValueList.get(0);
                 char[] array = value.toCharArray();
-                actualValues[row][dashIndex] = array[0];
+                cellValues[row][dashIndex].setValue( array[0] );
             }
         }
     }
 
     public void findMissingValuesRow(Board board){
-        char[][] actualValues = board.getActualValues();
+        Cell [][] cellValues = board.getCellArray();
         char[] possibleValues = board.getPossibleValues();
 
         List<String> possibleValueList = new ArrayList();
@@ -71,23 +72,23 @@ public class OneMissingSolver implements Solver {
             }
 
             for (int row = 0; row < boardSize; row++){
-                if (actualValues[row][col] == '-') {
+                if (cellValues[row][col].getValue() == '-') {
                     dashCount++;
                     dashIndex = row;     //keep track of what row the dash is in
                 }else{
-                    possibleValueList.remove(String.valueOf(actualValues[row][col]));
+                    possibleValueList.remove(String.valueOf(cellValues[row][col].getValue()));
                 }
             }
             if(dashCount == 1){
                 String value = possibleValueList.get(0);
                 char[] array = value.toCharArray();
-                actualValues[dashIndex][col] = array[0];
+                cellValues[dashIndex][col].setValue( array[0] );
             }
         }
     }
 
     public void findMissingBlock(Board board){
-        char[][] actualValues = board.getActualValues();
+        Cell [][] cellValues = board.getCellArray();
         char[] possibleValues = board.getPossibleValues();
 
         List<String> possibleValueList = new ArrayList();
@@ -109,7 +110,7 @@ public class OneMissingSolver implements Solver {
             for( char c: possibleValues) {
                 BlockInfo blockInfo = board.checkBlock(c, blockNum);
                 if (blockInfo.isFound()){
-                    possibleValueList.remove(String.valueOf(actualValues[blockInfo.getRow()][blockInfo.getCol()]));
+                    possibleValueList.remove(String.valueOf(cellValues[blockInfo.getRow()][blockInfo.getCol()].getValue()));
                 }else{
                     notFound++;
                     missingBlockInfo = blockInfo;
@@ -118,7 +119,7 @@ public class OneMissingSolver implements Solver {
             if(notFound == 1){
                 String value = possibleValueList.get(0);
                 char[] array = value.toCharArray();
-                actualValues[ missingBlockInfo.getRow() ][ missingBlockInfo.getCol() ] = array[0];
+                cellValues[ missingBlockInfo.getRow() ][ missingBlockInfo.getCol() ].setValue(array[0]);
             }
         }
     }

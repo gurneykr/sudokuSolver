@@ -6,8 +6,8 @@ import java.util.List;
 public class Board {
     int boardSize;
     char possibleValues[];
-    char actualValues[][];
-    // Cell[][] cellArray = new Cell[][];
+   // char actualValues[][];
+    Cell[][] cellArray;
 
 
     public int getBoardSize() {
@@ -31,21 +31,21 @@ public class Board {
         this.possibleValues = possibleValues;
     }
 
-    public char[][] getActualValues() {
-        return actualValues;
+    public Cell[][] getCellArray() {
+        return cellArray;
     }
 
-    public void setActualValues(char[][] actualValues) {
-        this.actualValues = actualValues;
+    public void setCellArray(Cell[][] cellArray) {
+        this.cellArray = cellArray;
     }
 
-    public void setCharacter(char value, int row, int col)throws InvalidBoardException{
-        if(row <= boardSize && col <= boardSize){
-            validateValueInPossibleValues(value);
-        }else{
-            throw new InvalidBoardException("Value is not possible");
-        }
-    }
+//    public void setCharacter(char value, int row, int col)throws InvalidBoardException{
+////        if(row <= boardSize && col <= boardSize){
+////            validateValueInPossibleValues(value);
+////        }else{
+////            throw new InvalidBoardException("Value is not possible");
+////        }
+////    }
 
     public void printBoard() throws FileNotFoundException {
 
@@ -55,7 +55,7 @@ public class Board {
         System.out.println();
         for (int row = 0; row < boardSize; row++) {
             for (int col = 0; col < boardSize; col++) {
-                System.out.print(actualValues[row][col] + " ");
+                System.out.print(cellArray[row][col].getValue() + " ");
             }
             System.out.println();
         }
@@ -91,22 +91,24 @@ public class Board {
         this.setPossibleValues(possibleValues);
 
 
-        char actualValue[][] = new char[boardSize][boardSize];
+        Cell cellArray[][] = new Cell[boardSize][boardSize];
         for (int row = 0; row < boardSize; row++) {//get the actual board
             counter = 0;
             line = br.readLine();
             String boardValues[] = line.split(" ");
             for (String n : boardValues) {
+                Cell cell = new Cell();
 
                 char characterArray[] = n.toCharArray();
                 if (characterArray.length == 1) {
-                    actualValue[row][counter++] = characterArray[0];
+                    cellArray[row][counter] = cell;
+                    cellArray[row][counter++].setValue(characterArray[0]);
                 } else {
                     throw new Error("Invalid value detected");
                 }
             }
         }
-        this.setActualValues(actualValue);
+        this.setCellArray(cellArray);
         //this.printBoard(true, "out.txt");
 
         this.validateBoardValues();
@@ -115,7 +117,7 @@ public class Board {
     public boolean isSolved(){//make sure there are not dashes left
         for(int i = 0; i < boardSize; i++){
             for(int j = 0; j < boardSize; j++){
-                if(actualValues[i][j] == '-'){
+                if(cellArray[i][j].getValue() == '-'){
                     return false;
                 }
             }
@@ -126,7 +128,7 @@ public class Board {
     public boolean checkRow(char value, int row) {
         if (row <= boardSize) {
             for (int col = 0; col < boardSize; col++) {
-                if (value == actualValues[row][col]) {
+                if (value == cellArray[row][col].getValue()) {
                     return true;
                 }
             }
@@ -137,7 +139,7 @@ public class Board {
     public boolean checkCol(char value, int col) {
         if (col <= boardSize) {
             for (int row = 0; row < boardSize; row++) {
-                if (value == actualValues[row][col]) {
+                if (value == cellArray[row][col].getValue()) {
                     return true;
                 }
             }
@@ -444,11 +446,11 @@ public class Board {
         int missingCol = 0;
         for (int rowCounter = rowStart; rowCounter <= rowEnd; rowCounter++) {
             for (int colCounter = colStart; colCounter <= colEnd; colCounter++) {
-                if (value == actualValues[rowCounter][colCounter]) {
+                if (value == cellArray[rowCounter][colCounter].getValue()) {
                    // System.out.println("Start Row " + rowStart + " end row " + rowEnd + " start column " + colStart + " end column " + colEnd);
                    // System.out.println("Value " + value + " in [" + rowCounter + "][" + colCounter + "]");
                     return new BlockInfo(rowCounter, colCounter, blockNum, true);
-                }else if(actualValues[rowCounter][colCounter] == '-'){
+                }else if(cellArray[rowCounter][colCounter].getValue() == '-'){
                     missingRow = rowCounter;
                     missingCol = colCounter;
                 }
@@ -571,7 +573,7 @@ public class Board {
         }
         for (int rowCounter = rowStart; rowCounter <= rowEnd; rowCounter++) {
             for (int colCounter = colStart; colCounter <= colEnd; colCounter++) {
-                if (value == actualValues[rowCounter][colCounter]) {
+                if (value == cellArray[rowCounter][colCounter].getValue()) {
                     return true;
                 }
             }
@@ -580,10 +582,10 @@ public class Board {
         return false;
     }
 
-    void validateValueInPossibleValues(char value)throws InvalidBoardException{
+    void validateValueInPossibleValues(Cell cell)throws InvalidBoardException{
         boolean isValid = false;
         for(int k = 0; k < boardSize; k++) {
-            if(value == possibleValues[k] || value == '-' ){
+            if(cell.getValue() == possibleValues[k] || cell.getValue() == '-' ){
                 isValid = true;
                 break;
             }
@@ -596,7 +598,7 @@ public class Board {
     void validateBoardValues() throws InvalidBoardException{//makes sure the board values are one of the possible values
         for(int i = 0; i < boardSize; i++) {
             for(int j = 0; j < boardSize;j++ ){
-                validateValueInPossibleValues(actualValues[i][j]);
+                validateValueInPossibleValues(cellArray[i][j]);
             }
         }
     }
