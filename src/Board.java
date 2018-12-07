@@ -603,6 +603,7 @@ public class Board {
     List<SolverInfo> solve() throws InvalidBoardException{
 
         List<SolverInfo> solvers = new ArrayList();
+
         OneMissingSolver oneMissingSolver = new OneMissingSolver();
         PotentialValueSolver potentialValueSolver = new PotentialValueSolver();
 

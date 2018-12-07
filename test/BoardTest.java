@@ -9,6 +9,7 @@ public class BoardTest{
 
     @Test
     public void loadInvalidBoard(){
+
         Board board = new Board();
         try {
             board.loadBoard("C:\\Users\\Krista Gurney\\Documents\\cs5700\\sudokuSolver\\test\\invalidBoardSize.txt");
@@ -22,6 +23,13 @@ public class BoardTest{
 
     @Test
     public void loadInvalidPossibleValues(){
+           /*
+        4
+        1 2 3 10
+        2 - 3 1
+        1 3 - 4
+        3 1 4 -
+        - 2 1 3*/
         Board board = new Board();
         try {
             board.loadBoard("C:\\Users\\Krista Gurney\\Documents\\cs5700\\sudokuSolver\\test\\invalidPossibleValues.txt");
@@ -35,6 +43,13 @@ public class BoardTest{
 
     @Test
     public void tooManyPossibleValues(){
+        /*
+        4
+        1 2 3 4 5 6 7 8
+        2 - 3 1
+        1 3 - 4
+        3 1 4 -
+        - 2 1 3 */
         Board board = new Board();
         try {
             board.loadBoard("C:\\Users\\Krista Gurney\\Documents\\cs5700\\sudokuSolver\\test\\tooManyPossibleValues.txt");
@@ -48,6 +63,13 @@ public class BoardTest{
 
     @Test
     public void invalidValue(){
+        /*
+        4
+        1 2 3 4
+        2 - 3 7
+        1 3 - 4
+        3 1 4 -
+        - 2 1 3*/
         Board board = new Board();
         try {
             board.loadBoard("C:\\Users\\Krista Gurney\\Documents\\cs5700\\sudokuSolver\\test\\invalidValue.txt");
