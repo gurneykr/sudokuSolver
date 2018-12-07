@@ -28,4 +28,6 @@ public class Cell {
 
         this.potentialValuesList.add(String.valueOf(potentialValue));
     }
+
+    public void resetPotentialValues() { potentialValuesList = new ArrayList(); }
 }

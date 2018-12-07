@@ -39,13 +39,13 @@ public class Board {
         this.cellArray = cellArray;
     }
 
-//    public void setCharacter(char value, int row, int col)throws InvalidBoardException{
-////        if(row <= boardSize && col <= boardSize){
-////            validateValueInPossibleValues(value);
-////        }else{
-////            throw new InvalidBoardException("Value is not possible");
-////        }
-////    }
+    public void resetPotentialValues() {
+        for (int row = 0; row < boardSize; row++) {
+            for (int col = 0; col < boardSize; col++) {
+                cellArray[row][col].resetPotentialValues();
+            }
+        }
+    }
 
     public void printBoard() throws FileNotFoundException {
 
@@ -622,6 +622,7 @@ public class Board {
         int oneMissingCounter = 0;
 
         while(!this.isSolved() && counter < 30) {
+            resetPotentialValues();
             potentialValueTimer += potentialValueSolver.solve(this);
             oneMissingTimer += oneMissingSolver.solve(this);
             counter++;
