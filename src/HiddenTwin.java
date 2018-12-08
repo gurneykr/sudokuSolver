@@ -38,7 +38,7 @@ public class HiddenTwin implements Solver{
         }
     }
 
-    private void elminateTwinsFromOtherPotentialValueRow(Board board, List<Cell> twinCells, int row, char firstEliminatedValue, char secondEliminatedValue){
+    protected void elminateTwinsFromOtherPotentialValueRow(Board board, List<Cell> twinCells, int row, char firstEliminatedValue, char secondEliminatedValue){
         Cell cell;
         for(int col = 0; col < board.getBoardSize(); col++){
             cell = board.getCellArray()[row][col];
@@ -66,7 +66,7 @@ public class HiddenTwin implements Solver{
         }
     }
 
-    private List<Cell> createTwinCombinations(List<Cell> possibleHiddenTwinArray, char firstValue, char secondValue){
+    protected List<Cell> createTwinCombinations(List<Cell> possibleHiddenTwinArray, char firstValue, char secondValue){
         //take the possible values from the board and make combinations
 
         List<Cell> twinCells = new ArrayList();
@@ -80,7 +80,7 @@ public class HiddenTwin implements Solver{
         return twinCells;
     }
 
-    private boolean containsPotentialValues(Cell cell, char firstValue, char secondValue){
+    protected boolean containsPotentialValues(Cell cell, char firstValue, char secondValue){
         int counter = 0;
         for(int i = 0; i < cell.getPotentialValues().size(); i++){
             if(cell.getPotentialValues().get(i).equals(String.valueOf(firstValue))){
