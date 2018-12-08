@@ -6,7 +6,6 @@ import java.util.List;
 public class Board {
     int boardSize;
     char possibleValues[];
-   // char actualValues[][];
     Cell[][] cellArray;
 
 
@@ -97,12 +96,11 @@ public class Board {
             line = br.readLine();
             String boardValues[] = line.split(" ");
             for (String n : boardValues) {
-                Cell cell = new Cell();
 
                 char characterArray[] = n.toCharArray();
                 if (characterArray.length == 1) {
-                    cellArray[row][counter] = cell;
-                    cellArray[row][counter++].setValue(characterArray[0]);
+                    cellArray[row][counter] = new Cell(characterArray[0], row, counter);
+                    counter++;
                 } else {
                     throw new Error("Invalid value detected");
                 }

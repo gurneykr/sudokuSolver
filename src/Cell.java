@@ -4,12 +4,13 @@ import java.util.List;
 public class Cell {
     private char value;
     private List<String> potentialValuesList = new ArrayList();
+    private int row;
+    private int col;
 
-    public Cell(char value){
+    public Cell(char value, int row, int col){
         this.value = value;
-    }
-    public Cell(){
-
+        this.row = row;
+        this.col = col;
     }
 
     public char getValue() {
@@ -18,6 +19,14 @@ public class Cell {
 
     public void setValue(char value) {
         this.value = value;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
     }
 
     public List<String> getPotentialValues() {
@@ -30,4 +39,14 @@ public class Cell {
     }
 
     public void resetPotentialValues() { potentialValuesList = new ArrayList(); }
+
+    public void removePotentialValue(char potentialValue){
+        //have to go backwards through the potential value list to remove things
+        for(int i = potentialValuesList.size()-1; i > 0; i--){
+            if(potentialValuesList.get(i).equals(String.valueOf(potentialValue))){
+                potentialValuesList.remove(i);
+                break;
+            }
+        }
+    }
 }
