@@ -32,18 +32,19 @@ public class HiddenTwin implements Solver{
             if(twinCells.size() == 2){//found exactly two cells with those potential values
                 //tell the board to eliminate those potential values from other cells in the row
                 for(int row = 0; row < board.getBoardSize(); row++) {
-                    elminateTwinsFromOtherPotentialValueRow(board, twinCells, row, firstValue, secondValue);
+                    eliminateTwinsFromOtherPotentialValueRow(board, twinCells, row, firstValue, secondValue);
                 }
             }
         }
     }
 
-    protected void elminateTwinsFromOtherPotentialValueRow(Board board, List<Cell> twinCells, int row, char firstEliminatedValue, char secondEliminatedValue){
+    protected void eliminateTwinsFromOtherPotentialValueRow(Board board, List<Cell> twinCells, int row, char firstEliminatedValue, char secondEliminatedValue){
         Cell cell;
         for(int col = 0; col < board.getBoardSize(); col++){
             cell = board.getCellArray()[row][col];
 
             //is this cell one of our twin cells? yes- leave it alone no-remove the first and second eliminatedValues
+            //this might be the problem?
             if(cell.getRow() == twinCells.get(0).getRow() && cell.getCol() == twinCells.get(0).getCol() ||
                cell.getRow() == twinCells.get(1).getRow() && cell.getCol() == twinCells.get(1).getCol()){
                 //leave it alone
@@ -57,9 +58,8 @@ public class HiddenTwin implements Solver{
             List<String> potentialValues = twinCells.get(i).getPotentialValues();
             for(int j = 0; j < potentialValues.size(); j++) {
 
-                if( !potentialValues.get(j).equals(firstEliminatedValue) && !potentialValues.get(j).equals(secondEliminatedValue)){
-                    twinCells.get(i).removePotentialValue(firstEliminatedValue);
-                    twinCells.get(i).removePotentialValue(secondEliminatedValue);
+                if( !potentialValues.get(j).equals(String.valueOf(firstEliminatedValue)) && !potentialValues.get(j).equals(String.valueOf(secondEliminatedValue))){
+                    twinCells.get(i).removePotentialValue(potentialValues.get(j).toCharArray()[0]);
                 }
 
             }
