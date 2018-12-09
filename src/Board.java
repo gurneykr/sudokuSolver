@@ -445,8 +445,8 @@ public class Board {
         for (int rowCounter = rowStart; rowCounter <= rowEnd; rowCounter++) {
             for (int colCounter = colStart; colCounter <= colEnd; colCounter++) {
                 if (value == cellArray[rowCounter][colCounter].getValue()) {
-                   // System.out.println("Start Row " + rowStart + " end row " + rowEnd + " start column " + colStart + " end column " + colEnd);
-                   // System.out.println("Value " + value + " in [" + rowCounter + "][" + colCounter + "]");
+                    // System.out.println("Start Row " + rowStart + " end row " + rowEnd + " start column " + colStart + " end column " + colEnd);
+                    // System.out.println("Value " + value + " in [" + rowCounter + "][" + colCounter + "]");
                     return new BlockInfo(rowCounter, colCounter, blockNum, true);
                 }else if(cellArray[rowCounter][colCounter].getValue() == '-'){
                     missingRow = rowCounter;
@@ -600,52 +600,61 @@ public class Board {
             }
         }
     }
-    List<SolverInfo> solve(){
+    List<SolverInfo> solve() {
 
         List<SolverInfo> solvers = new ArrayList();
 
         OneMissingSolver oneMissingSolver = new OneMissingSolver();
         PotentialValueSolver potentialValueSolver = new PotentialValueSolver();
         HiddenTwinRow hiddenTwinRowSolver = new HiddenTwinRow();
+        HiddenTwinCol hiddenTwinColSolver = new HiddenTwinCol();
 
         SolverInfo potentialValueInfo = new SolverInfo("Potential Value Solver");
         SolverInfo oneMissingInfo = new SolverInfo("One Missing Solver");
-        SolverInfo hiddenTwinInfo = new SolverInfo("Hidden Twin Solver");
+        SolverInfo hiddenTwinRowInfo = new SolverInfo("Hidden Twin Row Solver");
+        SolverInfo hiddenTwinColInfo = new SolverInfo("Hidden Twin Col Solver");
 
         solvers.add(potentialValueInfo);
         solvers.add(oneMissingInfo);
-        solvers.add(hiddenTwinInfo);
+        solvers.add(hiddenTwinRowInfo);
+        solvers.add(hiddenTwinColInfo);
 
         int counter = 0;
         long potentialValueTimer = 0;
         long oneMissingTimer = 0;
         long hiddenTwinRowTimer = 0;
+        long hiddenTwinColTimer = 0;
         int potentialValueCounter = 0;
         int oneMissingCounter = 0;
         int hiddenTwinRowCounter = 0;
+        int hiddenTwinColCounter = 0;
 
         while(!this.isSolved() && counter < 300) {
             resetPotentialValues();
 
-            //get all of the potential values
+            // Get all of the potential values
             PotentialValueSolver.findPotentialValues(this);
 
-            //adjust the potential values by looking for hidden twins
+            // Adjust the potential values by looking for hidden twins
             hiddenTwinRowTimer += hiddenTwinRowSolver.solve(this);
+            hiddenTwinColTimer += hiddenTwinColSolver.solve(this);
 
-            //get all of the potential values
+
+            // Set cells with only 1 potential value
             potentialValueTimer += potentialValueSolver.solve(this);
 
-            //set cells with only 1 possible value per row/col/block
+            // Set cells with only 1 possible value per row/col/block
             oneMissingTimer += oneMissingSolver.solve(this);
 
-            System.out.println("*****************************************");
+            System.out.println("************************************************************************************");
             this.printBoard();
+            System.out.println("************************************************************************************");
 
             counter++;
             potentialValueCounter++;
             oneMissingCounter++;
             hiddenTwinRowCounter++;
+            hiddenTwinColCounter++;
         }
         if(!this.isSolved()){
             System.out.println("Can't solve the puzzle");
@@ -656,8 +665,11 @@ public class Board {
         oneMissingInfo.setSolverTime(oneMissingTimer);
         oneMissingInfo.setTimesUsed(oneMissingCounter);
 
-        hiddenTwinInfo.setSolverTime(hiddenTwinRowTimer);
-        hiddenTwinInfo.setTimesUsed(hiddenTwinRowCounter);
+        hiddenTwinRowInfo.setSolverTime(hiddenTwinRowTimer);
+        hiddenTwinRowInfo.setTimesUsed(hiddenTwinRowCounter);
+
+        hiddenTwinColInfo.setSolverTime(hiddenTwinColTimer);
+        hiddenTwinColInfo.setTimesUsed(hiddenTwinColCounter);
 
         return solvers;
     }

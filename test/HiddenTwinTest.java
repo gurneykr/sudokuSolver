@@ -37,39 +37,39 @@ public class HiddenTwinTest {
 
     @Test
     public void testFindTwinCombinations(){
-        List<Cell> possiblehiddenTwinArray = new ArrayList();
+        List<Cell> possibleHiddenTwinArray = new ArrayList();
         Cell cell = new Cell('-', 0, 0);
 
         cell.addPotentialValue('1');
-        possiblehiddenTwinArray.add(cell);
+        possibleHiddenTwinArray.add(cell);
 
-        List<Cell> cellCombinations = hiddenTwinRow.findTwinCombinations(possiblehiddenTwinArray, '1', '2');
+        List<Cell> cellCombinations = hiddenTwinRow.findTwinCombinations(possibleHiddenTwinArray, '1', '2');
         //no possible twin
         assertEquals(cellCombinations.size(), 0);
 
         cell.addPotentialValue('2');
-        cellCombinations = hiddenTwinRow.findTwinCombinations(possiblehiddenTwinArray, '1', '2');
+        cellCombinations = hiddenTwinRow.findTwinCombinations(possibleHiddenTwinArray, '1', '2');
         //one cell possible
         assertEquals(cellCombinations.size(), 1);
 
         Cell cell2 = new Cell('2', 0, 1);
         cell2.addPotentialValue('1');
         cell2.addPotentialValue('2');
-        possiblehiddenTwinArray.add(cell2);
+        possibleHiddenTwinArray.add(cell2);
 
-        cellCombinations = hiddenTwinRow.findTwinCombinations(possiblehiddenTwinArray, '1', '2');
+        cellCombinations = hiddenTwinRow.findTwinCombinations(possibleHiddenTwinArray, '1', '2');
         //two cells possible
         assertEquals(cellCombinations.size(), 2);
 
         Cell cell3 = new Cell('3', 0, 2);
         cell3.addPotentialValue('1');
-        possiblehiddenTwinArray.add(cell3);
+        possibleHiddenTwinArray.add(cell3);
 
-        cellCombinations = hiddenTwinRow.findTwinCombinations(possiblehiddenTwinArray, '1', '2');
+        cellCombinations = hiddenTwinRow.findTwinCombinations(possibleHiddenTwinArray, '1', '2');
         assertEquals(cellCombinations.size(), 2);
 
         cell3.addPotentialValue('2');
-        cellCombinations = hiddenTwinRow.findTwinCombinations(possiblehiddenTwinArray, '1', '2');
+        cellCombinations = hiddenTwinRow.findTwinCombinations(possibleHiddenTwinArray, '1', '2');
         //three cells possible
         assertEquals(cellCombinations.size(), 3);
     }
@@ -80,6 +80,11 @@ public class HiddenTwinTest {
         Board board = new Board();
         board.setBoardSize(4);
         Cell cellArray[][] = new Cell[board.getBoardSize()][board.getBoardSize()];
+    /*
+    - - 3 1
+    1 3 - 4
+    3 - 4 -
+    - 2 - 3 */
 
         ///CASE 1- two cells have the same twin values- eliminate value from non twin////
         Cell cell00 = new Cell('2', 0, 0);
@@ -123,11 +128,10 @@ public class HiddenTwinTest {
 
         assertEquals(cell02.getPotentialValues().size(), 1);
         assertEquals(cell02.getPotentialValues().get(0), "3");
-    }
 
-//    @Test
-//    public void testFindhiddenTwinRowRowRow(){
-//
-//    }
+        ////////////////////////
+
+
+    }
 
 }

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class HiddenTwin implements Solver{
+public abstract class HiddenTwin implements Solver {
 
     protected List<Cell> findTwinCombinations(List<Cell> possibleHiddenTwinArray, char firstValue, char secondValue){
         //take the possible values from the board and make combinations
