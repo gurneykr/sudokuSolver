@@ -42,7 +42,7 @@ public class Cell {
 
     public void removePotentialValue(char potentialValue){
         //have to go backwards through the potential value list to remove things
-        for(int i = potentialValuesList.size()-1; i > 0; i--){
+        for(int i = 0; i < potentialValuesList.size(); i++){
             if(potentialValuesList.get(i).equals(String.valueOf(potentialValue))){
                 potentialValuesList.remove(i);
                 break;

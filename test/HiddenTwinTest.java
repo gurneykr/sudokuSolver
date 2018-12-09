@@ -100,6 +100,7 @@ public class HiddenTwinTest {
         cellArray[0][1] = cell01;
 
         Cell cell02 = new Cell('4', 0, 2);
+        cell02.addPotentialValue('2');
         cell02.addPotentialValue('3');
         cellArray[0][2] = cell02;
 
@@ -121,6 +122,13 @@ public class HiddenTwinTest {
         assertEquals(cell01.getPotentialValues().size(), 2);
         assertEquals(cell01.getPotentialValues().get(0), "1");
         assertEquals(cell01.getPotentialValues().get(1), "2");
+
+        assertEquals(cell03.getPotentialValues().size(), 1);
+        assertEquals(cell03.getPotentialValues().get(0), "4");
+
+        assertEquals(cell02.getPotentialValues().size(), 1);
+        assertEquals(cell02.getPotentialValues().get(0), "3");
+
         ////////////////////////
 
 
