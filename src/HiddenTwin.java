@@ -28,7 +28,7 @@ public class HiddenTwin implements Solver{
             char firstValue = board.getPossibleValues()[i];
             char secondValue = board.getPossibleValues()[i + 1];
 
-            List<Cell> twinCells = createTwinCombinations(possibleHiddenTwinArray, firstValue, secondValue);
+            List<Cell> twinCells = findTwinCombinations(possibleHiddenTwinArray, firstValue, secondValue);
             if(twinCells.size() == 2){//found exactly two cells with those potential values
                 //tell the board to eliminate those potential values from other cells in the row
                 for(int row = 0; row < board.getBoardSize(); row++) {
@@ -66,7 +66,7 @@ public class HiddenTwin implements Solver{
         }
     }
 
-    protected List<Cell> createTwinCombinations(List<Cell> possibleHiddenTwinArray, char firstValue, char secondValue){
+    protected List<Cell> findTwinCombinations(List<Cell> possibleHiddenTwinArray, char firstValue, char secondValue){
         //take the possible values from the board and make combinations
 
         List<Cell> twinCells = new ArrayList();
