@@ -145,319 +145,6 @@ public class Board {
         return false;
     }
 
-
-    public BlockInfo checkBlock(char value, int blockNum) {
-        //uses the given row and col to find what block to look for a value
-        int rowStart = 0;
-        int rowEnd = 0;
-        int colStart = 0;
-        int colEnd = 0;
-
-        if (boardSize == 4) {
-            if(blockNum == 1){
-                rowStart = 0;
-                rowEnd = 1;
-                colStart = 0;
-                colEnd = 1;
-            }else if(blockNum == 2){
-                rowStart = 0;
-                rowEnd = 1;
-                colStart = 2;
-                colEnd = 3;
-            }else if(blockNum == 3){
-                rowStart = 2;
-                rowEnd = 3;
-                colStart = 0;
-                colEnd = 1;
-            }else if(blockNum == 4){
-                rowStart = 2;
-                rowEnd = 3;
-                colStart = 2;
-                colEnd = 3;
-            }
-        }
-
-        if (boardSize == 9) {
-            if(blockNum == 1){
-                rowStart = 0;
-                rowEnd = 2;
-                colStart = 0;
-                colEnd = 2;
-            }else if(blockNum == 2){
-                rowStart = 0;
-                rowEnd = 2;
-                colStart = 3;
-                colEnd = 5;
-            }else if(blockNum == 3){
-                rowStart = 0;
-                rowEnd = 2;
-                colStart = 6;
-                colEnd = 8;
-            }else if(blockNum == 4){
-                rowStart = 3;
-                rowEnd = 5;
-                colStart = 0;
-                colEnd = 2;
-            }else if(blockNum == 5){
-                rowStart = 3;
-                rowEnd = 5;
-                colStart = 3;
-                colEnd = 5;
-            }else if(blockNum == 6){
-                rowStart = 3;
-                rowEnd = 5;
-                colStart = 6;
-                colEnd = 8;
-            }else if(blockNum == 7){
-                rowStart = 6;
-                rowEnd = 8;
-                colStart = 0;
-                colEnd = 2;
-            }else if(blockNum == 8){
-                rowStart = 6;
-                rowEnd = 8;
-                colStart = 3;
-                colEnd = 5;
-            }else if(blockNum == 9){
-                rowStart = 6;
-                rowEnd = 8;
-                colStart = 6;
-                colEnd = 8;
-            }
-        }
-
-        if (boardSize == 16) {
-            if(blockNum == 1){
-                rowStart = 0;
-                rowEnd = 3;
-                colStart = 0;
-                colEnd = 3;
-            }else if(blockNum == 2){
-                rowStart = 0;
-                rowEnd = 3;
-                colStart = 4;
-                colEnd = 7;
-            }else if(blockNum == 3){
-                rowStart = 0;
-                rowEnd = 3;
-                colStart = 8;
-                colEnd = 11;
-            }else if(blockNum == 4){
-                rowStart = 0;
-                rowEnd = 3;
-                colStart = 12;
-                colEnd = 15;
-            }else if(blockNum == 5){
-                rowStart = 4;
-                rowEnd = 7;
-                colStart = 0;
-                colEnd = 3;
-            }else if(blockNum == 6){
-                rowStart = 4;
-                rowEnd = 7;
-                colStart = 4;
-                colEnd = 7;
-            }else if(blockNum == 7){
-                rowStart = 4;
-                rowEnd = 7;
-                colStart = 8;
-                colEnd = 11;
-            }else if(blockNum == 8){
-                rowStart = 4;
-                rowEnd = 7;
-                colStart = 12;
-                colEnd = 15;
-            }else if(blockNum == 9){
-                rowStart = 8;
-                rowEnd = 11;
-                colStart = 0;
-                colEnd = 3;
-            }else if(blockNum == 10){
-                rowStart = 8;
-                rowEnd = 11;
-                colStart = 4;
-                colEnd = 7;
-            }else if(blockNum == 11){
-                rowStart = 8;
-                rowEnd = 11;
-                colStart = 8;
-                colEnd = 11;
-            }else if(blockNum == 12){
-                rowStart = 8;
-                rowEnd = 11;
-                colStart = 12;
-                colEnd = 15;
-            }else if(blockNum == 13){
-                rowStart = 12;
-                rowEnd = 15;
-                colStart = 0;
-                colEnd = 3;
-            }else if(blockNum == 14){
-                rowStart = 12;
-                rowEnd = 15;
-                colStart = 4;
-                colEnd = 7;
-            }else if(blockNum == 15){
-                rowStart = 12;
-                rowEnd = 15;
-                colStart = 8;
-                colEnd = 11;
-            }else if(blockNum == 16){
-                rowStart = 12;
-                rowEnd = 15;
-                colStart = 12;
-                colEnd = 15;
-            }
-
-
-        }
-
-        if (boardSize == 25) {
-            if(blockNum == 1){
-                rowStart = 0;
-                rowEnd = 4;
-                colStart = 0;
-                colEnd = 4;
-            }else if(blockNum == 2){
-                rowStart = 0;
-                rowEnd = 4;
-                colStart = 5;
-                colEnd = 9;
-            }else if(blockNum == 3){
-                rowStart = 0;
-                rowEnd = 4;
-                colStart = 10;
-                colEnd = 14;
-            }else if(blockNum == 4){
-                rowStart = 0;
-                rowEnd = 4;
-                colStart = 15;
-                colEnd = 19;
-            }else if(blockNum == 5){//
-                rowStart = 0;
-                rowEnd = 4;
-                colStart = 20;
-                colEnd = 24;
-            }else if(blockNum == 6){
-                rowStart = 5;
-                rowEnd = 9;
-                colStart = 0;
-                colEnd = 4;
-            }else if(blockNum == 7){
-                rowStart = 5;
-                rowEnd = 9;
-                colStart = 5;
-                colEnd = 9;
-            }else if(blockNum == 8){
-                rowStart = 5;
-                rowEnd = 9;
-                colStart = 10;
-                colEnd = 14;
-            }else if(blockNum == 9){
-                rowStart = 5;
-                rowEnd = 9;
-                colStart = 15;
-                colEnd = 19;
-            }else if(blockNum == 10){//
-                rowStart = 5;
-                rowEnd = 9;
-                colStart = 20;
-                colEnd = 24;
-            }else if(blockNum == 11){
-                rowStart = 10;
-                rowEnd = 14;
-                colStart = 0;
-                colEnd = 4;
-            }else if(blockNum == 12){
-                rowStart = 10;
-                rowEnd = 14;
-                colStart = 5;
-                colEnd = 9;
-            }else if(blockNum == 13){
-                rowStart = 10;
-                rowEnd = 14;
-                colStart = 10;
-                colEnd = 14;
-            }else if(blockNum == 14){
-                rowStart = 10;
-                rowEnd = 14;
-                colStart = 15;
-                colEnd = 19;
-            }else if(blockNum == 15){//
-                rowStart = 10;
-                rowEnd = 14;
-                colStart = 20;
-                colEnd = 24;
-            }else if(blockNum == 16){
-                rowStart = 15;
-                rowEnd = 19;
-                colStart = 0;
-                colEnd = 4;
-            }else if(blockNum == 17){
-                rowStart = 15;
-                rowEnd = 19;
-                colStart = 5;
-                colEnd = 9;
-            }else if(blockNum == 18){
-                rowStart = 15;
-                rowEnd = 19;
-                colStart = 10;
-                colEnd = 14;
-            }else if(blockNum == 19){
-                rowStart = 15;
-                rowEnd = 19;
-                colStart = 15;
-                colEnd = 19;
-            }else if(blockNum == 20){//
-                rowStart = 15;
-                rowEnd = 19;
-                colStart = 20;
-                colEnd = 24;
-            }else if(blockNum == 21){
-                rowStart = 20;
-                rowEnd = 24;
-                colStart = 0;
-                colEnd = 4;
-            }else if(blockNum == 22){
-                rowStart = 20;
-                rowEnd = 24;
-                colStart = 5;
-                colEnd = 9;
-            }else if(blockNum == 23){
-                rowStart = 20;
-                rowEnd = 24;
-                colStart = 10;
-                colEnd = 14;
-            }else if(blockNum == 24){
-                rowStart = 20;
-                rowEnd = 24;
-                colStart = 15;
-                colEnd = 19;
-            }else if(blockNum == 25){//
-                rowStart = 20;
-                rowEnd = 24;
-                colStart = 20;
-                colEnd = 24;
-            }
-        }
-        int missingRow = 0;
-        int missingCol = 0;
-        for (int rowCounter = rowStart; rowCounter <= rowEnd; rowCounter++) {
-            for (int colCounter = colStart; colCounter <= colEnd; colCounter++) {
-                if (value == cellArray[rowCounter][colCounter].getValue()) {
-                    // System.out.println("Start Row " + rowStart + " end row " + rowEnd + " start column " + colStart + " end column " + colEnd);
-                    // System.out.println("Value " + value + " in [" + rowCounter + "][" + colCounter + "]");
-                    return new BlockInfo(rowCounter, colCounter, blockNum, true);
-                }else if(cellArray[rowCounter][colCounter].getValue() == '-'){
-                    missingRow = rowCounter;
-                    missingCol = colCounter;
-                }
-            }
-
-        }
-        return new BlockInfo(missingRow, missingCol, blockNum, false);
-    }
-
     public boolean checkBlock(char value, int row, int col) {
         int rowStart = 0;
         int rowEnd = 0;
@@ -579,6 +266,325 @@ public class Board {
         }
         return false;
     }
+
+    public BlockInfo checkBlock(char value, int blockNum) {
+        //uses the given row and col to find what block to look for a value
+
+        BlockBoundaries bb = getBlockBoundaries(blockNum);
+
+        int missingRow = 0;
+        int missingCol = 0;
+        for (int rowCounter = bb.rowStart; rowCounter <= bb.rowEnd; rowCounter++) {
+            for (int colCounter = bb.colStart; colCounter <= bb.colEnd; colCounter++) {
+                if (value == cellArray[rowCounter][colCounter].getValue()) {
+                    return new BlockInfo(rowCounter, colCounter, blockNum, true);
+                }else if(cellArray[rowCounter][colCounter].getValue() == '-'){
+                    missingRow = rowCounter;
+                    missingCol = colCounter;
+                }
+            }
+
+        }
+        return new BlockInfo(missingRow, missingCol, blockNum, false);
+    }
+
+    BlockBoundaries getBlockBoundaries(int blockNum){
+        //uses the given row and col to find what block to look for a value
+
+        BlockBoundaries bb = new BlockBoundaries();
+
+        if (boardSize == 4) {
+            if(blockNum == 1){
+                bb.rowStart = 0;
+                bb.rowEnd = 1;
+                bb.colStart = 0;
+                bb.colEnd = 1;
+            }else if(blockNum == 2){
+                bb.rowStart = 0;
+                bb.rowEnd = 1;
+                bb.colStart = 2;
+                bb.colEnd = 3;
+            }else if(blockNum == 3){
+                bb.rowStart = 2;
+                bb.rowEnd = 3;
+                bb.colStart = 0;
+                bb.colEnd = 1;
+            }else if(blockNum == 4){
+                bb.rowStart = 2;
+                bb.rowEnd = 3;
+                bb.colStart = 2;
+                bb.colEnd = 3;
+            }
+        }
+
+        if (boardSize == 9) {
+            if(blockNum == 1){
+                bb.rowStart = 0;
+                bb.rowEnd = 2;
+                bb.colStart = 0;
+                bb.colEnd = 2;
+            }else if(blockNum == 2){
+                bb.rowStart = 0;
+                bb.rowEnd = 2;
+                bb.colStart = 3;
+                bb.colEnd = 5;
+            }else if(blockNum == 3){
+                bb.rowStart = 0;
+                bb.rowEnd = 2;
+                bb.colStart = 6;
+                bb.colEnd = 8;
+            }else if(blockNum == 4){
+                bb.rowStart = 3;
+                bb.rowEnd = 5;
+                bb.colStart = 0;
+                bb.colEnd = 2;
+            }else if(blockNum == 5){
+                bb.rowStart = 3;
+                bb.rowEnd = 5;
+                bb.colStart = 3;
+                bb.colEnd = 5;
+            }else if(blockNum == 6){
+                bb.rowStart = 3;
+                bb.rowEnd = 5;
+                bb.colStart = 6;
+                bb.colEnd = 8;
+            }else if(blockNum == 7){
+                bb.rowStart = 6;
+                bb.rowEnd = 8;
+                bb.colStart = 0;
+                bb.colEnd = 2;
+            }else if(blockNum == 8){
+                bb.rowStart = 6;
+                bb.rowEnd = 8;
+                bb.colStart = 3;
+                bb.colEnd = 5;
+            }else if(blockNum == 9){
+                bb.rowStart = 6;
+                bb.rowEnd = 8;
+                bb.colStart = 6;
+                bb.colEnd = 8;
+            }
+        }
+
+        if (boardSize == 16) {
+            if(blockNum == 1){
+                bb.rowStart = 0;
+                bb.rowEnd = 3;
+                bb.colStart = 0;
+                bb.colEnd = 3;
+            }else if(blockNum == 2){
+                bb.rowStart = 0;
+                bb.rowEnd = 3;
+                bb.colStart = 4;
+                bb.colEnd = 7;
+            }else if(blockNum == 3){
+                bb.rowStart = 0;
+                bb.rowEnd = 3;
+                bb.colStart = 8;
+                bb.colEnd = 11;
+            }else if(blockNum == 4){
+                bb.rowStart = 0;
+                bb.rowEnd = 3;
+                bb.colStart = 12;
+                bb.colEnd = 15;
+            }else if(blockNum == 5){
+                bb.rowStart = 4;
+                bb.rowEnd = 7;
+                bb.colStart = 0;
+                bb.colEnd = 3;
+            }else if(blockNum == 6){
+                bb.rowStart = 4;
+                bb.rowEnd = 7;
+                bb.colStart = 4;
+                bb.colEnd = 7;
+            }else if(blockNum == 7){
+                bb.rowStart = 4;
+                bb.rowEnd = 7;
+                bb.colStart = 8;
+                bb.colEnd = 11;
+            }else if(blockNum == 8){
+                bb.rowStart = 4;
+                bb.rowEnd = 7;
+                bb.colStart = 12;
+                bb.colEnd = 15;
+            }else if(blockNum == 9){
+                bb.rowStart = 8;
+                bb.rowEnd = 11;
+                bb.colStart = 0;
+                bb.colEnd = 3;
+            }else if(blockNum == 10){
+                bb.rowStart = 8;
+                bb.rowEnd = 11;
+                bb.colStart = 4;
+                bb.colEnd = 7;
+            }else if(blockNum == 11){
+                bb.rowStart = 8;
+                bb.rowEnd = 11;
+                bb.colStart = 8;
+                bb.colEnd = 11;
+            }else if(blockNum == 12){
+                bb.rowStart = 8;
+                bb.rowEnd = 11;
+                bb.colStart = 12;
+                bb.colEnd = 15;
+            }else if(blockNum == 13){
+                bb.rowStart = 12;
+                bb.rowEnd = 15;
+                bb.colStart = 0;
+                bb.colEnd = 3;
+            }else if(blockNum == 14){
+                bb.rowStart = 12;
+                bb.rowEnd = 15;
+                bb.colStart = 4;
+                bb.colEnd = 7;
+            }else if(blockNum == 15){
+                bb.rowStart = 12;
+                bb.rowEnd = 15;
+                bb.colStart = 8;
+                bb.colEnd = 11;
+            }else if(blockNum == 16){
+                bb.rowStart = 12;
+                bb.rowEnd = 15;
+                bb.colStart = 12;
+                bb.colEnd = 15;
+            }
+
+
+        }
+
+        if (boardSize == 25) {
+            if(blockNum == 1){
+                bb.rowStart = 0;
+                bb.rowEnd = 4;
+                bb.colStart = 0;
+                bb.colEnd = 4;
+            }else if(blockNum == 2){
+                bb.rowStart = 0;
+                bb.rowEnd = 4;
+                bb.colStart = 5;
+                bb.colEnd = 9;
+            }else if(blockNum == 3){
+                bb.rowStart = 0;
+                bb.rowEnd = 4;
+                bb.colStart = 10;
+                bb.colEnd = 14;
+            }else if(blockNum == 4){
+                bb.rowStart = 0;
+                bb.rowEnd = 4;
+                bb.colStart = 15;
+                bb.colEnd = 19;
+            }else if(blockNum == 5){//
+                bb.rowStart = 0;
+                bb.rowEnd = 4;
+                bb.colStart = 20;
+                bb.colEnd = 24;
+            }else if(blockNum == 6){
+                bb.rowStart = 5;
+                bb.rowEnd = 9;
+                bb.colStart = 0;
+                bb.colEnd = 4;
+            }else if(blockNum == 7){
+                bb.rowStart = 5;
+                bb.rowEnd = 9;
+                bb.colStart = 5;
+                bb.colEnd = 9;
+            }else if(blockNum == 8){
+                bb.rowStart = 5;
+                bb.rowEnd = 9;
+                bb.colStart = 10;
+                bb.colEnd = 14;
+            }else if(blockNum == 9){
+                bb.rowStart = 5;
+                bb.rowEnd = 9;
+                bb.colStart = 15;
+                bb.colEnd = 19;
+            }else if(blockNum == 10){//
+                bb.rowStart = 5;
+                bb.rowEnd = 9;
+                bb.colStart = 20;
+                bb.colEnd = 24;
+            }else if(blockNum == 11){
+                bb.rowStart = 10;
+                bb.rowEnd = 14;
+                bb.colStart = 0;
+                bb.colEnd = 4;
+            }else if(blockNum == 12){
+                bb.rowStart = 10;
+                bb.rowEnd = 14;
+                bb.colStart = 5;
+                bb.colEnd = 9;
+            }else if(blockNum == 13){
+                bb.rowStart = 10;
+                bb.rowEnd = 14;
+                bb.colStart = 10;
+                bb.colEnd = 14;
+            }else if(blockNum == 14){
+                bb.rowStart = 10;
+                bb.rowEnd = 14;
+                bb.colStart = 15;
+                bb.colEnd = 19;
+            }else if(blockNum == 15){//
+                bb.rowStart = 10;
+                bb.rowEnd = 14;
+                bb.colStart = 20;
+                bb.colEnd = 24;
+            }else if(blockNum == 16){
+                bb.rowStart = 15;
+                bb.rowEnd = 19;
+                bb.colStart = 0;
+                bb.colEnd = 4;
+            }else if(blockNum == 17){
+                bb.rowStart = 15;
+                bb.rowEnd = 19;
+                bb.colStart = 5;
+                bb.colEnd = 9;
+            }else if(blockNum == 18){
+                bb.rowStart = 15;
+                bb.rowEnd = 19;
+                bb.colStart = 10;
+                bb.colEnd = 14;
+            }else if(blockNum == 19){
+                bb.rowStart = 15;
+                bb.rowEnd = 19;
+                bb.colStart = 15;
+                bb.colEnd = 19;
+            }else if(blockNum == 20){//
+                bb.rowStart = 15;
+                bb.rowEnd = 19;
+                bb.colStart = 20;
+                bb.colEnd = 24;
+            }else if(blockNum == 21){
+                bb.rowStart = 20;
+                bb.rowEnd = 24;
+                bb.colStart = 0;
+                bb.colEnd = 4;
+            }else if(blockNum == 22){
+                bb.rowStart = 20;
+                bb.rowEnd = 24;
+                bb.colStart = 5;
+                bb.colEnd = 9;
+            }else if(blockNum == 23){
+                bb.rowStart = 20;
+                bb.rowEnd = 24;
+                bb.colStart = 10;
+                bb.colEnd = 14;
+            }else if(blockNum == 24){
+                bb.rowStart = 20;
+                bb.rowEnd = 24;
+                bb.colStart = 15;
+                bb.colEnd = 19;
+            }else if(blockNum == 25){//
+                bb.rowStart = 20;
+                bb.rowEnd = 24;
+                bb.colStart = 20;
+                bb.colEnd = 24;
+            }
+        }
+
+        return bb;
+    }
+
+
 
     void validateValueInPossibleValues(Cell cell)throws InvalidBoardException{
         boolean isValid = false;
