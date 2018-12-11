@@ -13,6 +13,7 @@ public class PotentialValueSolverTest {
         board.loadBoard(path + "Puzzle-4x4-0001.txt");
 
         PotentialValueSolver potentialValueSolver = new PotentialValueSolver();
+        PotentialValueSolver.findPotentialValues(board);
         potentialValueSolver.solve(board);
 
                /*

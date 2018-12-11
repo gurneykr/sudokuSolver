@@ -30,10 +30,10 @@ public class HiddenTwinRow extends HiddenTwin {
                 }
             }
 
-            for (int i = 0; i < board.getPossibleValues().length - 1; i++) {
+            for (int i = 0; i < board.getPossibleValues().length; i++) {
                 char firstValue = board.getPossibleValues()[i];
 
-                for (int j = i + 1; j < board.getPossibleValues().length - 1; j++) {
+                for (int j = i + 1; j < board.getPossibleValues().length; j++) {
                     char secondValue = board.getPossibleValues()[j];
 
                     List<Cell> twinCells = findTwinCombinations(possibleHiddenTwinArray, firstValue, secondValue);
