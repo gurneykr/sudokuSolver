@@ -28,17 +28,17 @@ public class HiddenTwinCol extends HiddenTwin {
                 }
             }
 
-            for (int i = 0; i < board.getPossibleValues().length - 1; i++) {
-                char firstValue = board.getPossibleValues()[i];
+            if(possibleHiddenTwinArray.size() > 0) {
+                for (int i = 0; i < board.getPossibleValues().length - 1; i++) {
+                    char firstValue = board.getPossibleValues()[i];
 
-                for (int j = i + 1; j < board.getPossibleValues().length - 1; j++) {
-                    char secondValue = board.getPossibleValues()[j];
+                    for (int j = i + 1; j < board.getPossibleValues().length - 1; j++) {
+                        char secondValue = board.getPossibleValues()[j];
 
-                    List<Cell> twinCells = findTwinCombinations(possibleHiddenTwinArray, firstValue, secondValue);
-                    if (twinCells.size() == 2) {//found exactly two cells with those potential values
-                        //tell the board to eliminate those potential values from other cells in the row
-                        for (int col2 = 0; col2 < board.getBoardSize(); col2++) {
-                            eliminateTwinsFromOtherPotentialValueCol(board, twinCells, col2, firstValue, secondValue);
+                        List<Cell> twinCells = findTwinCombinations(possibleHiddenTwinArray, firstValue, secondValue);
+                        if (twinCells.size() == 2) {//found exactly two cells with those potential values
+                            //tell the board to eliminate those potential values from other cells in the row
+                           eliminateTwinsFromOtherPotentialValueCol(board, twinCells, col, firstValue, secondValue);
                         }
                     }
                 }
