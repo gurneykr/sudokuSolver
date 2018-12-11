@@ -647,9 +647,9 @@ public class Board {
             PotentialValueSolver.findPotentialValues(this);
 
             // Adjust the potential values by looking for hidden twins
-          //  hiddenTwinRowTimer += hiddenTwinRowSolver.solve(this);
-          //  hiddenTwinColTimer += hiddenTwinColSolver.solve(this);
-          //  hiddenTwinBlockTimer += hiddenTwinBlockSolver.solve(this);
+            hiddenTwinRowTimer += hiddenTwinRowSolver.solve(this);
+            hiddenTwinColTimer += hiddenTwinColSolver.solve(this);
+            hiddenTwinBlockTimer += hiddenTwinBlockSolver.solve(this);
 
 
             // Set cells with only 1 potential value
@@ -658,16 +658,16 @@ public class Board {
             // Set cells with only 1 possible value per row/col/block
             oneMissingTimer += oneMissingSolver.solve(this);
 
-            System.out.println("************************************************************************************");
-            this.printBoard();
-            System.out.println("************************************************************************************");
+            //System.out.println("************************************************************************************");
+           // this.printBoard();
+           // System.out.println("************************************************************************************");
 
             counter++;
             potentialValueCounter++;
             oneMissingCounter++;
             hiddenTwinRowCounter++;
             hiddenTwinColCounter++;
-            hiddenTwinBlockTimer++;
+            hiddenTwinBlockCounter++;
         }
         if(!this.isSolved()){
             System.out.println("Can't solve the puzzle");
