@@ -20,7 +20,6 @@ public class PotentialValueSolver implements Solver{
                 if (cellValues[row][col].getPotentialValues().size() == 1) {
                     //sets the value to the potentialvalue[0]
                     cellValues[row][col].setValue(cellValues[row][col].getPotentialValues().get(0).toCharArray()[0]);
-                    return;
                 }
             }
         }

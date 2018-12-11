@@ -614,26 +614,31 @@ public class Board {
         PotentialValueSolver potentialValueSolver = new PotentialValueSolver();
         HiddenTwinRow hiddenTwinRowSolver = new HiddenTwinRow();
         HiddenTwinCol hiddenTwinColSolver = new HiddenTwinCol();
+        HiddenTwinBlock hiddenTwinBlockSolver = new HiddenTwinBlock();
 
         SolverInfo potentialValueInfo = new SolverInfo("Potential Value Solver");
         SolverInfo oneMissingInfo = new SolverInfo("One Missing Solver");
         SolverInfo hiddenTwinRowInfo = new SolverInfo("Hidden Twin Row Solver");
         SolverInfo hiddenTwinColInfo = new SolverInfo("Hidden Twin Col Solver");
+        SolverInfo hiddenTwinBlockInfo = new SolverInfo("Hidden Twin Block Solver");
 
         solvers.add(potentialValueInfo);
         solvers.add(oneMissingInfo);
         solvers.add(hiddenTwinRowInfo);
         solvers.add(hiddenTwinColInfo);
+        solvers.add(hiddenTwinBlockInfo);
 
         int counter = 0;
         long potentialValueTimer = 0;
         long oneMissingTimer = 0;
         long hiddenTwinRowTimer = 0;
         long hiddenTwinColTimer = 0;
+        long hiddenTwinBlockTimer = 0;
         int potentialValueCounter = 0;
         int oneMissingCounter = 0;
         int hiddenTwinRowCounter = 0;
         int hiddenTwinColCounter = 0;
+        int hiddenTwinBlockCounter = 0;
 
         while(!this.isSolved() && counter < 300) {
             resetPotentialValues();
@@ -642,8 +647,9 @@ public class Board {
             PotentialValueSolver.findPotentialValues(this);
 
             // Adjust the potential values by looking for hidden twins
-            hiddenTwinRowTimer += hiddenTwinRowSolver.solve(this);
-            hiddenTwinColTimer += hiddenTwinColSolver.solve(this);
+          //  hiddenTwinRowTimer += hiddenTwinRowSolver.solve(this);
+          //  hiddenTwinColTimer += hiddenTwinColSolver.solve(this);
+          //  hiddenTwinBlockTimer += hiddenTwinBlockSolver.solve(this);
 
 
             // Set cells with only 1 potential value
@@ -661,6 +667,7 @@ public class Board {
             oneMissingCounter++;
             hiddenTwinRowCounter++;
             hiddenTwinColCounter++;
+            hiddenTwinBlockTimer++;
         }
         if(!this.isSolved()){
             System.out.println("Can't solve the puzzle");
@@ -676,6 +683,9 @@ public class Board {
 
         hiddenTwinColInfo.setSolverTime(hiddenTwinColTimer);
         hiddenTwinColInfo.setTimesUsed(hiddenTwinColCounter);
+
+        hiddenTwinBlockInfo.setSolverTime(hiddenTwinBlockTimer);
+        hiddenTwinBlockInfo.setTimesUsed(hiddenTwinBlockCounter);
 
         return solvers;
     }

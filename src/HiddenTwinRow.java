@@ -30,15 +30,18 @@ public class HiddenTwinRow extends HiddenTwin {
                 }
             }
 
-            for(int i = 0; i < board.getPossibleValues().length - 1; i++) {
+            for (int i = 0; i < board.getPossibleValues().length - 1; i++) {
                 char firstValue = board.getPossibleValues()[i];
-                char secondValue = board.getPossibleValues()[i + 1];
 
-                List<Cell> twinCells = findTwinCombinations(possibleHiddenTwinArray, firstValue, secondValue);
-                if(twinCells.size() == 2){//found exactly two cells with those potential values
-                    //tell the board to eliminate those potential values from other cells in the row
-                    for(int row2 = 0; row2 < board.getBoardSize(); row2++) {
-                        eliminateTwinsFromOtherPotentialValueRow(board, twinCells, row2, firstValue, secondValue);
+                for (int j = i + 1; j < board.getPossibleValues().length - 1; j++) {
+                    char secondValue = board.getPossibleValues()[j];
+
+                    List<Cell> twinCells = findTwinCombinations(possibleHiddenTwinArray, firstValue, secondValue);
+                    if (twinCells.size() == 2) {//found exactly two cells with those potential values
+                        //tell the board to eliminate those potential values from other cells in the row
+                        for (int row2 = 0; row2 < board.getBoardSize(); row2++) {
+                            eliminateTwinsFromOtherPotentialValueRow(board, twinCells, row2, firstValue, secondValue);
+                        }
                     }
                 }
             }

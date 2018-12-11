@@ -47,7 +47,6 @@ public class OneMissingSolver implements Solver {
                 String value = possibleValueList.get(0);
                 char[] array = value.toCharArray();
                 cellValues[row][dashIndex].setValue( array[0] );
-                return;
             }
         }
     }
@@ -84,7 +83,6 @@ public class OneMissingSolver implements Solver {
                 String value = possibleValueList.get(0);
                 char[] array = value.toCharArray();
                 cellValues[dashIndex][col].setValue( array[0] );
-                return;
             }
         }
     }
@@ -122,7 +120,6 @@ public class OneMissingSolver implements Solver {
                 String value = possibleValueList.get(0);
                 char[] array = value.toCharArray();
                 cellValues[ missingBlockInfo.getRow() ][ missingBlockInfo.getCol() ].setValue(array[0]);
-                return;
             }
         }
     }

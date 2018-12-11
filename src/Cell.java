@@ -41,7 +41,6 @@ public class Cell {
     public void resetPotentialValues() { potentialValuesList = new ArrayList(); }
 
     public void removePotentialValue(char potentialValue){
-        //have to go backwards through the potential value list to remove things
         for(int i = 0; i < potentialValuesList.size(); i++){
             if(potentialValuesList.get(i).equals(String.valueOf(potentialValue))){
                 potentialValuesList.remove(i);
